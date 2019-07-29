@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/Login.css"/>
+<script type="text/javascript" src="lib/jquery-3.2.1.js"></script>
+<title>无标题文档</title>
+</head>
+
+<body>
+<div id="noteDiv">
+<ul id="list">
+   <!--   <li>这是公告标题的第一行</li>-->
+    </ul>
+</div>
+<script>
+loadNotice();
+function loadNotice(){
+	$.getJSON("notedata.php" , function (data) {
+            $("#list").html('');			
+            $.each(data, function (infoIndex, info) {
+                //strHtml += "vg����"+info["t_provinceid"]+"<br>";
+                //strHtml += "�Ա�"+info["t_cityid"]+"<br>";
+                //strHtml += "���䣺"+info["t_cityflag"]+"<br>";
+                //strHtml += "<hr>"
+                //districtHtml += info["t_distcode"] + "," + info["t_districtname"];
+                //noticeHtml += '<option value="' + info["t_distcode"] + '">' + info["t_districtname"] + '</option>';
+				var noticename = info["NoteTitle"];				
+				alert(noticename);
+      		 $("#list").html($("#list").html() + "<a>" + noticename + "</a>"+"<br>");
+                //alert(districtHtml);
+                //alert(areaData);
+            });
+            // alert("1");
+            //alert(districtHtml);
+            //alert("2");
+            //$form.find('select[name=district]').append(districtHtml);
+          
+        });
+    
+}
+</script>
+</body>
+
+</html>

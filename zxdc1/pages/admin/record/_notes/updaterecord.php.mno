@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsSuper" value="name:SuperID;datatype:int,name:SuperName;datatype:string,name:SuperPwd;datatype:string,name:SuperMemo;datatype:string" />
+</info>

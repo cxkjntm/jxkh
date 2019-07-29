@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="../../../lib/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="../../../js/lib/echarts.js"></script>
+<script type="text/javascript" src="../../../js/lib/macarons.js"></script>
+<title>无标题文档</title>
+</head>
+
+<body>
+ <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+<script type="text/javascript">
+              var  myChart = echarts.init(document.getElementById('main'), 'macarons');
+              var arr1=[],arr2=[], arr=[];
+              function arrTest(){
+                $.ajax({
+                  type:"post",
+                  async:false,
+                  url:"getuser.php",
+                  data:{},
+                  dataType:"json",
+                  success:function(result){
+                    if (result) {
+                      for (var i = 0; i < result.length; i++) {
+                          arr1.push(result[i].value);
+                          arr2.push(result[i].name);
+						  //alert(result[i].deptname);
+						  //series["value"]=result[i].usernum;
+						  //series["name"]=result[i].deptname;
+						  //alert(series["value"]);
+						  //alert(series["name"]);
+						  arr.push(result[i]);
+						  //alert(["value"]);
+                      }k
+                    }
+                  }
+                })
+                return arr1,arr2,arr;
+              }
+              arrTest();
+			  //alert("number is : "+arr.length);
+			 // var j=0;
+			 // for(j=0;j<arr.length;j++)
+					//alert("j is "+j+" :"+arr[j]["value"]);
+             option = {
+    title : {
+        text: '中层问卷',
+        subtext: '纯属虚构',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'left',
+        data:arr2
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {
+                show: true, 
+                type: ['pie', 'funnel'],
+                option: {
+                    funnel: {
+                        x: '25%',
+                        width: '50%',
+                        funnelAlign: 'left',
+                        max: 1548
+                    }
+                }
+            },
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    series : [
+        {
+            name:'部门',
+            type:'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:arr
+			
+        }
+    ]
+};
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+            // }
+    </script>	
+</body>
+</html>

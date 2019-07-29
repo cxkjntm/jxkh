@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>添加调查考核记录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="lyc">
+  <meta name="description" content="layui中使用form表单监听异步验证注册">
+ <link rel="stylesheet" type="text/css" href="../../../lib/layui245/css/layui.css">
+</head>
+<body>
+<div>
+<form class="layui-form layui-form-pane" action=""  method="">
+    <div class="layui-row"> 
+	<div class="layui-col-md2">&nbsp;&nbsp;</div>
+	<div class="layui-col-md4"><div class="layui-form-item">
+        <label class="layui-form-label">考核名称</label>
+        <div class="layui-input-inline">
+          <input type="text" name="recordname" lay-verify="recordname" autocomplete="off" placeholder="请输入考核记录名" class="layui-input">
+        </div>
+      </div></div>
+      
+    </div>
+	
+	  
+   <div class="layui-row"> 
+     <div class="layui-col-md2">&nbsp;</div>
+	<div class="layui-col-md4"><div class="layui-form-item">
+        <label class="layui-form-label">开始时间</label>
+        <div class="layui-input-inline">
+         <input type="text" name="starttime" id="starttime" lay-verify="starttime" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+        </div>
+      </div></div>
+      
+	  </div>
+    
+	<div class="layui-row"> 
+     <div class="layui-col-md2">&nbsp;</div>
+	  <div class="layui-col-md4"><div class="layui-form-item">
+        <label class="layui-form-label">结束时间</label>
+        <div class="layui-input-inline">
+         <input type="text" name="endtime" id="endtime" lay-verify="endtime" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+        </div>
+      </div></div>
+      
+	  </div>
+  <div class="layui-row">
+  <div class="layui-col-md2">&nbsp;&nbsp;</div>
+  <div class="layui-col-md4">
+   <div class="layui-form-item">
+        <div class="layui-input-inline">
+          <button class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="demo1">提交信息</button>
+        </div>
+      </div>
+  
+  
+  </div>
+     
+    
+ </div>   
+
+</form>
+
+
+
+</div>
+<script src="../../../lib/jquery-3.2.1.js"></script>
+<script src="../../../lib/layui245/layui.js"></script>
+
+<script>
+
+//监听提交
+layui.use(['form', 'laydate'], function(){
+  var form = layui.form;
+  var laydate = layui.laydate;
+  var layer=layui.layer;
+  var $=layui.jquery;
+  
+  //日期
+  laydate.render({
+    elem: '#starttime'
+  });
+  laydate.render({
+    elem: '#endtime'
+  });
+  
+  form.verify({
+    recordtime: function(value){
+      if(value.length < 6 || value.length >20){
+        return '考核记录名为6-20个字符';
+      }
+    }
+   
+    
+  });
+  
+    form.on('submit(demo1)', function(data){
+    
+	layer.msg(JSON.stringify(data.field));//弹出json格式所有表单的值
+    var recordname=data.field.recordname;    
+	var starttime=data.field.starttime;
+	var endtime=data.field.endtime;
+   
+    $.ajax({
+      type:"POST",
+       url:"saverecord.php",
+      data:"recordname="+recordname+"&starttime="+starttime+"&endtime="+endtime,
+      dataType:"json",
+      success:function(data){
+        if(data.code==200){
+          layer.msg('保存成功！', {icon: 1});
+         // var url = "{:U('device/getinfo')}"; //成功跳转的url
+          //setTimeout(window.location.href=url,2000);
+        }else{
+          layer.msg(data.msg, {icon: 2});
+        }
+      },
+    });
+	return false;
+  });
+
+form.render();
+});
+
+</script>
+
+</body>
+</html>

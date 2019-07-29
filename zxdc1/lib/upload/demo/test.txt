@@ -1,0 +1,6 @@
+array (
+  'dirname' => '.',
+  'basename' => '3、论文说明.rmvb',
+  'extension' => 'rmvb',
+  'filename' => '3、论文说明',
+)

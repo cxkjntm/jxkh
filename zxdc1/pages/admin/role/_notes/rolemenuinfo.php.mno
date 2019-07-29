@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsrm" value="name:MenuName;datatype:string,name:Menu_URL;datatype:string,name:LevelName;datatype:string,name:id;datatype:int,name:status;datatype:int" />
+</info>

@@ -1,0 +1,176 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>添加新通知</title>
+	<script type="text/javascript" src="../../../lib/jquery-3.2.1.js"></script>
+     
+     <link rel="stylesheet" type="text/css" href="../../../lib/bootstrap/bootstrapValidator.min.css">
+     <link rel="stylesheet" type="text/css" href="../../../lib/layer/theme/default/layer.css">
+	 <link rel="stylesheet" type="text/css" href="../../../lib/bootstrap/bootstrap.min.css">
+     <script type="text/javascript" src="../../../lib/bootstrap/bootstrap.min.js"></script>
+     <script type="text/javascript" src="../../../lib/bootstrap/bootstrapValidator.min.js"></script>
+ 	<script type="text/javascript" src="../../../lib/ckeditor/ckeditor.js"></script>
+   <script type="text/javascript" src="../../../lib/layer/layer.js"></script>
+
+</head>
+<body>
+
+ <div class="container">
+             <form class="form-horizontal" action="savenote.php" method="post"  enctype="multipart/form-data"  id="form-test">
+             <div class="form-group">
+                     <label for="newsTitle" class="col-sm-1 control-label">通知标题</label>
+                     <div  class="col-sm-6">
+                         <input  class="form-control " name="title" id="title" placeholder="请输入通知标题"/>
+                     </div>
+              </div>
+                 <div class="form-group">
+                     <label for="newsMan" class="col-sm-1 control-label">发布人</label>
+                     <div  class="col-sm-4">
+                        <input  class="form-control " name="username" id="username" placeholder="请输入发布人"/>
+                     </div>
+                 </div>
+                 
+                 <div class="form-group">
+                     <label for=editor1" class="col-sm-1 control-label">通知内容</label>
+                  <div  class="col-sm-8">
+                      <textarea id="editor1"></textarea>
+                   </div>
+              </div>
+              <div class="form-group">                
+                  <div  class="col-sm-6">                  
+                      
+                      <input type="hidden" name="contentvalue" id="contentvalue" >
+                    <input type="submit"  id="btn-test" value="发 布 通 知" class="btn btn-success btn-default"/>
+                  </div>
+               </div>
+          </form>
+
+  </div>
+
+
+</body>
+
+<script language="JavaScript">
+
+    CKEDITOR.replace('editor1'); // 这里的 'editor1' 等于 textarea 的 id 'editor1'
+
+
+    function getLength() {
+        var length =strlen(filterHtml(CKEDITOR.instances.editor1.getData()));
+        //alert(length);
+        return length;
+    }
+
+    /**
+     *过滤html标签
+     */
+    function filterHtml(s){
+        s = s.replace(/<\/?[^>]*>/g,'');
+        return s.trim();
+    }
+    /**
+     *  获得字符串实际长度，中文2，英文1
+     */
+    function strlen(str) {
+        var regExp = new RegExp(" ","g");
+        str = str.replace(regExp , "");
+        str = str.replace(/\r\n/g,"");
+        var realLength = 0, len = str.length, charCode = -1;
+        for (var i = 0; i < len; i++) {
+            charCode = str.charCodeAt(i);
+            if (charCode >= 0 && charCode <= 128) realLength += 1;
+            else realLength += 2;
+        }
+        return realLength;
+    }
+
+
+    $(function () {
+
+       
+       $("#form-test").bootstrapValidator({
+            live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
+            excluded: [':disabled', ':hidden', ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
+            submitButtons: '#btn-test',//指定提交按钮，如果验证失败则变成disabled，但我没试成功，反而加了这句话非submit按钮也会提交到action指定页面
+            message: '通用的验证失败消息',//好像从来没出现过
+            feedbackIcons: {//根据验证结果显示的各种图标
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    message: '发布人验证失败',
+                    validators: {
+                        notEmpty: {
+                            message: '发布人不能为空'
+                        }
+                    }
+                },
+                title: {
+                    message: '通知标题验证失败',
+                    validators: {
+                        notEmpty: {
+                            message: '通知标题不能为空'
+                        },
+                        stringLength: {
+                            /*长度提示*/
+                            min: 6,
+                            max: 40,
+                            message: '通知长度必须在6到40字符之间'
+                        }
+                    }
+                },
+                newsContent: {
+                    message: '通知内容验证失败',
+                    validators: {
+                        notEmpty: {
+                            message: '通知内容不能为空'
+                        },
+                        stringLength: {
+                            /*长度提示*/
+                            min: 6,
+                            max: 200,
+                            message: '通知长度必须在6到200字符之间'
+                        }
+                    }
+                }
+            }
+        });
+
+    });
+    $("#btn-test").click(function () {//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
+            $("#form-test").bootstrapValidator('validate');//提交验证
+            if ($("#form-test").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
+
+               
+               var lengthofcontent=0;
+                lengthofcontent=getLength();
+                alert(lengthofcontent);
+                alert(CKEDITOR.instances.editor1.getData());
+//
+                if (lengthofcontent<10){
+                    layer.alert('通知内容不能小于10个汉字');
+                    return false;
+                }
+
+                if(lengthofcontent>200){
+                    layer.alert('通知内容不能多于200个汉字');
+                    return false;
+                    //alert("yes");//验证成功后的
+                }
+               //操作，如ajax
+                $("#contentvalue").val(CKEDITOR.instances.editor1.getData());
+                alert($("#contentvalue").val());
+                return true;
+
+            }
+
+    });
+</script>
+
+</html>

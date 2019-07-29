@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="../../../js/lib/echarts.js"></script>
+	<div id="pie1" style="width: 600px;height:400px;"></div>
+	<script type="text/javascript">
+    var myChart1 = echarts.init(document.getElementById('pie1'));
+    option1 = {
+		tooltip: {
+			trigger: 'item',
+			formatter: "{a} <br/>{b}: {c} ({d}%)"
+		},
+		series: [
+			{
+				name:'学段分类统计',
+				type: 'pie',
+				radius: [0, '35%'],
+				label: {
+					normal: {
+						position: 'inner'
+					}
+				},//扇形区域内显示文字
+				data:[
+					{value:25, name:'学生'},
+					{value:35, name:'教师'},
+					{value:45, name:'家长'}
+				],
+				color: ['#10EFE0','#EF42A4','#FF8F03']
+			},
+			{
+				name:'角色分类统计',
+				type: 'pie',
+				radius: ['35%', '75%'],
+				labelLine: {
+					normal: {
+						show: true,
+					}
+				},
+				data:[
+					{ value: 10, name: '学生（小学）' },
+					{ value: 10, name: '学生（初中）' },
+					{ value: 5, name: '学生（高中）' },
+					{ value: 15, name: '教师（小学）' },
+					{ value: 15, name: '教师（初中）' },
+					{ value: 5, name: '教师（高中）' },
+					{ value: 20, name: '家长（小学）' },
+					{ value: 10, name: '家长（初中）' },
+					{ value: 15, name: '家长（高中）' },
+
+				],
+				color:['#51CEC6','#6AE2D9','#96F5EF','#EF87C2','#F79DD0','#FFC8E7','#FFB703','#FFCD50','#FFE296']
+			},
+
+		],
+
+	};
+    myChart1.setOption(option1);
+	
+	//添加点击事件，可以点击每个区域，其中params为每个区相关属性，可以根据该属性写各种事件
+	myChart1.on('click', function(params){
+		console.log(params);
+	});
+    </script>
+</head>
+</html>
