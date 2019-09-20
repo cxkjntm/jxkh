@@ -19,7 +19,11 @@
          		<input class="layui-input" name="id" id="demoReload" autocomplete="off" placeholder="请输入搜索条件">
        		 </div>
         	<button class="layui-btn" data-type="reload">查询</button>
-        	</div>
+        	<span class="fl">        
+        		<a class="layui-btn btn-add btn-default" id="btn-add">添加新菜单</a>
+        
+    		</span>
+        </div>
         
     </span> 
     
@@ -27,7 +31,8 @@
 
 <table class="layui-hide" id="test" lay-filter="test"></table>
 <script type="text/html" id="barDemo">
-  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>  
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="ban">禁用</a> 
 </script>
 <script>
 layui.use(['table', 'layer', 'form'], function(){

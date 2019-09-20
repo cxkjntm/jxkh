@@ -51,7 +51,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 	
 
 	mysql_select_db($database_connjxkh, $connjxkh);
-	$insertSQL = sprintf("INSERT INTO voteRecord (RecordName, RecordCode, starttime, endtime,status) VALUES (%s, %s, %s, %s,%s)",
+	$insertSQL = sprintf("INSERT INTO voterecord (RecordName, RecordCode, starttime, endtime,status) VALUES (%s, %s, %s, %s,%s)",
                        GetSQLValueString($recordname, "text"),
                        GetSQLValueString($recordcode, "int"),
                        GetSQLValueString($starttime, "text"),

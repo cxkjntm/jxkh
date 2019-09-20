@@ -16,7 +16,7 @@
     <div class="layui-col-md8 ayui-col-space1">
       <form class="layui-form layui-form-pane"  method="post" action="selectdept1.php">      
         <div class="layui-form-item">
-          <label class="layui-form-label">问卷调查期次</label>
+          <label class="layui-form-label">问卷期次</label>
           <div class="layui-input-inline">
             <select name="voteissue" id="voteissue"   lay-verify="required" lay-filter="voteissue">
               <option value="0">请选择期次</option>

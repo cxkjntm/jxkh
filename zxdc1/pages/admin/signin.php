@@ -54,7 +54,7 @@ if (isset($_POST['SuperPwd'])) {
 //echo $colname_rsSuper2;
 mysql_select_db($database_connjxkh, $connjxkh);
 //$query_rsSuper = sprintf("SELECT * FROM SuperInfo WHERE SuperName = %s and SuperPwd=%s", GetSQLValueString($colname_rsSuper1, "text"),GetSQLValueString($colname_rsSuper2, "text"));
-$query_rsSuper = sprintf("SELECT * FROM SuperInfo WHERE SuperName = %s ", GetSQLValueString($colname_rsSuper1, "text"));
+$query_rsSuper = sprintf("SELECT * FROM superinfo WHERE SuperName = %s ", GetSQLValueString($colname_rsSuper1, "text"));
 //echo $query_rsSuper."<br>";
 $rsSuper = mysql_query($query_rsSuper, $connjxkh) or die(mysql_error());
 $row_rsSuper = mysql_fetch_assoc($rsSuper);

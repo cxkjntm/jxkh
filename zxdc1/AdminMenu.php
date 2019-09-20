@@ -5,12 +5,25 @@ mysql_query('SET NAMES UTF8');
 if (!isset($_SESSION)) {
   session_start();
 }
+
+$colname_rsdept = "-1";
+if (isset($_SESSION['Admin_DeptID'])) {
+  $colname_rsdept = (get_magic_quotes_gpc()) ? $_SESSION['Admin_DeptID'] : addslashes($_SESSION['Admin_DeptID']);
+}
 mysql_select_db($database_connjxkh, $connjxkh);
+$query_rsdept = sprintf("SELECT * FROM deptinfo WHERE DeptID = %s", $colname_rsdept);
+$rsdept = mysql_query($query_rsdept, $connjxkh) or die(mysql_error());
+$row_rsdept = mysql_fetch_assoc($rsdept);
+$totalRows_rsdept = mysql_num_rows($rsdept);
+$deptMemo=$row_rsdept["DeptMemo"];
+
+//mysql_select_db($database_connjxkh, $connjxkh);
 $mymenu="select MenuID,MenuName,MenuMid,Menu_URL from menuinfo where MenuID in (19,23)";
 $result =mysql_query($mymenu, $connjxkh);
 $a=7;
 ?>
 <?php require_once('include/config.php'); ?>
+
 <!doctype html>
 <html>
 	<head>
@@ -79,7 +92,17 @@ $a=7;
 					echo "<li><a class='a'  target='test2' href='".$r[3]."'><i class='iconfont'>&#xe6a7;</i><cite>".$r[1]."</cite></a></li>";
 					
 				} 
+				if ($row[0]==19 and $deptMemo=='院部'){
+					$url="person/view_member.php";
+					$name="浏览9人考核小组成员";
+					echo "<li><a class='a'  target='test2' href='".$url."'><i class='iconfont'>&#xe6a7;</i><cite>".$name."</cite></a></li>";
+					$url="person/selectgroupmember.php";
+					$name="选择9人考核小组成员";
+					echo "<li><a class='a'  target='test2' href='".$url."'><i class='iconfont'>&#xe6a7;</i><cite>".$name."</cite></a></li>";
+				}
 				echo "</ul></li>";
+				
+					
 			}
 			?>	
 				</ul>
@@ -113,5 +136,7 @@ $a=7;
 	</body>
 </html>
 <?php
+mysql_free_result($rsdept);
+
 //mysql_free_result($rsRoleMenu);
 ?>

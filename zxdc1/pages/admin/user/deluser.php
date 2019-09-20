@@ -4,7 +4,7 @@
 if(isset($_POST['id']))
 	$UserID=$_POST['id'];
 //echo $UserID;
-$query_rsUser=" update UserInfo set IsBanned=false  where UserID=".$UserID;
+$query_rsUser=" update userinfo set IsBanned=false  where UserID=".$UserID;
 //echo $query_rsUser;
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);

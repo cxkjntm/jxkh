@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsNote" value="name:NoteID;datatype:int,name:NoteTitle;datatype:string,name:NoteContent;datatype:string,name:NotePublisher;datatype:string,name:ReleasedTime;datatype:string" />
+</info>

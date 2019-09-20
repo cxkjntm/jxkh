@@ -2,7 +2,7 @@
 <?php
 	mysql_query("set names 'utf8'"); //Êý¾Ý¿âÊä³ö±àÂë
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsUser = "SELECT COUNT(UserInfo.deptid) as usernum, DeptInfo.`DeptName` as deptname FROM UserInfo,DeptInfo WHERE UserInfo.`DeptID`=DeptInfo.`DeptID` GROUP BY UserInfo.deptid";
+$query_rsUser = "SELECT COUNT(userinfo.deptid) as usernum, deptinfo.`DeptName` as deptname FROM userinfo,deptinfo WHERE userinfo.`DeptID`=deptinfo.`DeptID` GROUP BY userinfo.deptid";
 $rsUser = mysql_query($query_rsUser, $connjxkh) or die(mysql_error());
 //$row_rsUser = mysql_fetch_assoc($rsUser);
 //$result = mysql_query("select * from study");

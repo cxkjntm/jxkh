@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsMenu" value="name:MenuID;datatype:int,name:MenuName;datatype:string,name:MenuMid;datatype:int,name:Menu_URL;datatype:string,name:Pare_Menu_ID;datatype:string,name:Order;datatype:int,name:status;datatype:int" />
+</info>

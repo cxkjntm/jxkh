@@ -168,7 +168,7 @@ mysql_close($connjxkh);
 	        if(data.code==200){
 	          	//alert("保存成功！");
 				alert("提交成功，感谢您的回答！");
-				window.location.href="../welcome.php";
+				window.location.href="checkvote2.php";
 	        }else{
 				alert("保存失败！");
 				

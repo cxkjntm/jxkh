@@ -35,10 +35,6 @@
 
 
 <table class="layui-hide" id="test" lay-filter="test"></table>
-<script type="text/html" id="barDemo">
-  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">禁用</a>
-</script>
 <script>
 layui.use(['table', 'layer', 'form'], function(){
    var form = layui.form
@@ -67,7 +63,6 @@ layui.use(['table', 'layer', 'form'], function(){
       ,{field: 'Photo', title: '照片', width:200, sort: true}
       ,{field: 'DeptName', title: '部门', width:200}  
 	  ,{field: 'LevelName', title: '职务', width:100}    	 
-	  ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}     
     ]]
   });
   

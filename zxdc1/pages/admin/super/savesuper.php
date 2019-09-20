@@ -17,7 +17,7 @@
 	$password= $t_hasher->HashPassword($password);
 	
 	mysql_select_db($database_connjxkh, $connjxkh);
-	$sql="INSERT INTO SuperInfo (SuperName, SuperPwd, SuperMemo)
+	$sql="INSERT INTO superinfo (SuperName, SuperPwd, SuperMemo)
 	VALUES ('$supername','$password','$memo')";
 
 	//echo $sql;

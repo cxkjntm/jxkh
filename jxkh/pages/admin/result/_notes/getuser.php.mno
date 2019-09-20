@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsUser" value="name:UserID;datatype:int,name:Account;datatype:string,name:UserName;datatype:string,name:Passwd;datatype:string,name:Photo;datatype:string,name:DeptID;datatype:int,name:Rank;datatype:int,name:IsEvaluated;datatype:int,name:IsPj;datatype:int,name:IsBanned;datatype:int" />
+</info>

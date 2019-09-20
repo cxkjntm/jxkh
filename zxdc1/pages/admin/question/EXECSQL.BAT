@@ -1,0 +1,1 @@
+C:\xampp1\mysql\bin\mysql -hlocalhost -uroot -p123456 < C:\xampp1\htdocs\zxdc1\pages\admin\question\test.sql

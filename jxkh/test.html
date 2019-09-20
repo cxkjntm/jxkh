@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test</title>
+	<script type="text/javascript" src="lib/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="lib/layui245/layui.js"></script>
+	<link rel="stylesheet" type="text/css" href="lib/layui245/css/layui.css">
+	<style type="text/css">
+		.layui-form-checkbox {
+			width: 95%;
+		}
+	</style>
+</head>
+<body>
+<form class="layui-form" action="" lay-filter="">
+  <div class="layui-form-item">
+    <label class="layui-form-label">输入框</label>
+    <div class="layui-input-block">
+      <input type="text" name="username" lay-verify="inputBlock" autocomplete="off" placeholder="请输入标题" class="layui-input">
+    </div>
+  </div>
+  
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">复选框</label>
+    <div class="layui-input-block">
+      <input class="chk" type="checkbox" name="testchk1" lay-skin="primary" value="1" title="测试 1">
+      <input class="chk" type="checkbox" name="testchk2" lay-skin="primary" value="2" title="测试 2">
+      <input class="chk" type="checkbox" name="testchk3" lay-skin="primary" value="3" title="测试 3">
+    </div>
+  </div>
+ 
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit="" lay-filter="test">立即提交</button>
+    </div>
+  </div>
+</form>
+<script type="text/javascript">
+	layui.use(['form', 'layedit', 'laydate'], function(){
+  		var form = layui.form,
+  		layer = layui.layer,
+  		testArr = [];
+
+  		form.verify({
+    		inputBlock: function(value){			// 可以使用verify对表单的单选框，下拉框，文本框等进行提交验证
+     			if(value.length < 2){
+        			return '标题不得少于2个字符';		
+      			}
+    		}
+    	});
+    	form.on('submit(test)', function(data){		// 根据选中的复选框对应的值存成数组判断数组长度代替验证
+    		for( i = 1;  i<4 ; i++){
+    			if(data.field['testchk'+i] != "" && data.field['testchk'+i] != null && data.field['testchk'+i] != undefined){
+    				testArr.push(data.field['testchk'+i]);
+    			}
+    			
+    		}
+    		if(testArr > 0 ){
+    			layer.alert(JSON.stringify(data.field), {
+     	 			title: '最终的提交信息'
+    			});
+    			return true;
+    		}else{
+    			layer.msg('您还未选择复选框',{
+    				time: 10000
+    			});
+    			return false;
+    		}
+    		
+  		});
+  	});
+</script>
+</body>
+</html>

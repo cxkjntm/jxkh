@@ -41,7 +41,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE LevelInfo SET LevelName=%s, IsBanned=%s WHERE LevelID=%s",
+  $updateSQL = sprintf("UPDATE levelinfo SET LevelName=%s, IsBanned=%s WHERE LevelID=%s",
                        GetSQLValueString($_POST['LevelName'], "text"),
                        GetSQLValueString($_POST['IsBanned'], "int"),
                        GetSQLValueString($_POST['LevelID'], "int"));
@@ -60,7 +60,7 @@ if (isset($_GET['LevelID'])) {
   $colname_rsRole = $_GET['LevelID'];
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsRole = sprintf("SELECT * FROM LevelInfo WHERE LevelID = %s", GetSQLValueString($colname_rsRole, "int"));
+$query_rsRole = sprintf("SELECT * FROM levelinfo WHERE LevelID = %s", GetSQLValueString($colname_rsRole, "int"));
 $rsRole = mysql_query($query_rsRole, $connjxkh) or die(mysql_error());
 $row_rsRole = mysql_fetch_assoc($rsRole);
 $totalRows_rsRole = mysql_num_rows($rsRole);

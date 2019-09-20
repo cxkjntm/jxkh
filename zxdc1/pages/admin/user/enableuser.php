@@ -36,7 +36,7 @@ if (isset($_GET['UserID'])) {
   $colname_rsUser = $_GET['UserID'];
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsUser = sprintf("update UserInfo set IsBanned=False WHERE UserID = %s", GetSQLValueString($colname_rsUser, "int"));
+$query_rsUser = sprintf("update userinfo set IsBanned=False WHERE UserID = %s", GetSQLValueString($colname_rsUser, "int"));
 $Result = mysql_query($query_rsUser, $connjxkh) or die(mysql_error());
 if($result)
 	echo json_encode(array('code'=>200));

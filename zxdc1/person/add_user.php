@@ -13,7 +13,7 @@ mysql_select_db($database_connjxkh, $connjxkh);
 $sql01="SELECT DeptID,DeptName from deptinfo where DeptID =".$_SESSION['Admin_DeptID'];
 $result01 = mysql_fetch_assoc(mysql_query($sql01, $connjxkh));
 //查询职级
-$sql02="SELECT LevelID,LevelName FROM levelinfo where LevelID !=1;";
+$sql02="SELECT LevelID,LevelName FROM levelinfo where   IsBanned=0;";
 $result02=mysql_query($sql02, $connjxkh)
 ?>
 <!doctype html>
@@ -37,7 +37,7 @@ $result02=mysql_query($sql02, $connjxkh)
       <div class="layui-form-item">
           <label class="layui-form-label">用户工号</label>
           <div class="layui-input-inline">
-            <input type="text" name="account" id="account" lay-verify="required" onblur="id1()" placeholder="请输入工号，8位数字" autocomplete="off"  class="layui-input">
+            <input type="text" name="account" id="account" lay-verify="required" onBlur="id1()" placeholder="请输入工号，8位数字" autocomplete="off"  class="layui-input">
 			</div> 
 		       <label id="s" style="color:red;"></label>
         </div>   
@@ -45,7 +45,7 @@ $result02=mysql_query($sql02, $connjxkh)
         <div class="layui-form-item">
           <label class="layui-form-label">用户名称</label>
           <div class="layui-input-inline">
-            <input type="text" name="username" id="username" lay-verify="required" onblur="id2()"  placeholder="请输入用户名" autocomplete="off"  class="layui-input">
+            <input type="text" name="username" id="username" lay-verify="required" onBlur="id2()"  placeholder="请输入用户名" autocomplete="off"  class="layui-input">
           </div>
 			<label id="n" style="color:red;"></label>
         </div>  
@@ -80,7 +80,7 @@ $result02=mysql_query($sql02, $connjxkh)
 		<input type="hidden" name="dept" id = "dept" value="<?php echo $_SESSION['Admin_DeptID'];?>">
         <div class="layui-form-item">
           <div class="layui-input-inline">            
-            <input  class="layui-btn" type="button" onclick="test();" value="立即提交"/>
+            <input  class="layui-btn" type="button" onClick="test();" value="立即提交"/>
           </div>
         </div>
 		

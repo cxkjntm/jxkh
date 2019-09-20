@@ -36,20 +36,20 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 $page=$_GET['page'];
 $limit=$_GET['limit'];
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsrm = "SELECT MenuInfo.MenuName, MenuInfo.Menu_URL, MenuInfo.Pare_Menu_ID, 
-				MenuInfo.MenuMid, LevelInfo.LevelName, Role_Menu.id, Role_Menu.status 
-				FROM Role_Menu, MenuInfo, LevelInfo 
-				WHERE Role_Menu.status = 0 AND LevelInfo.LevelID=Role_Menu.role_id 
-				AND MenuInfo.MenuID=Role_Menu.menu_id";
-$query_limit_rsrm = $query_rsrm." order by LevelInfo.LevelID, MenuInfo.MenuMid limit ".($page-1)*$limit.",".$limit;
+$query_rsrm = "SELECT menuinfo.MenuName, menuinfo.Menu_URL, menuinfo.Pare_Menu_ID, 
+				menuinfo.MenuMid, levelinfo.LevelName, role_menu.id, role_menu.status 
+				FROM role_menu, menuinfo, levelinfo 
+				WHERE role_menu.status = 0 AND levelinfo.LevelID=role_menu.role_id 
+				AND menuinfo.MenuID=role_menu.menu_id";
+$query_limit_rsrm = $query_rsrm." order by levelinfo.LevelID, menuinfo.MenuMid limit ".($page-1)*$limit.",".$limit;
 $rsrm = mysql_query($query_limit_rsrm, $connjxkh) or die(mysql_error());
 
 
-$sql2="SELECT MenuInfo.MenuName, MenuInfo.Menu_URL, MenuInfo.Pare_Menu_ID, MenuInfo.MenuMid,
-		 LevelInfo.LevelName, Role_Menu.id, Role_Menu.status 
-		 FROM Role_Menu, MenuInfo, LevelInfo 
-		 WHERE Role_Menu.status = 0 AND LevelInfo.LevelID=Role_Menu.role_id
-		 AND MenuInfo.MenuID=Role_Menu.menu_id";
+$sql2="SELECT menuinfo.MenuName, menuinfo.Menu_URL, menuinfo.Pare_Menu_ID, menuinfo.MenuMid,
+		 levelinfo.LevelName, role_menu.id, role_menu.status 
+		 FROM role_menu, menuinfo, levelinfo 
+		 WHERE role_menu.status = 0 AND levelinfo.LevelID=role_menu.role_id
+		 AND menuinfo.MenuID=role_menu.menu_id";
 $q_sql2=mysql_query($sql2);
 $count=mysql_num_rows($q_sql2);
 $arr=array();

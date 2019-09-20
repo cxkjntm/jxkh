@@ -33,7 +33,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsSuper = "SELECT * FROM DeptInfo";
+$query_rsSuper = "SELECT * FROM deptinfo where DeptMemo!='ÆäËü'";
 $rsSuper = mysql_query($query_rsSuper, $connjxkh) or die(mysql_error());
 $row_rsSuper = mysql_fetch_assoc($rsSuper);
 $totalRows_rsSuper = mysql_num_rows($rsSuper);

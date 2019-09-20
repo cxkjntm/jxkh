@@ -20,7 +20,7 @@
 	
 	$flag=0;
 	mysql_select_db($database_connjxkh, $connjxkh);
-	$sql="INSERT INTO NoteInfo (NoteTitle, NoteContent, NotePublisher, ReleasedTime)
+	$sql="INSERT INTO noteinfo (NoteTitle, NoteContent, NotePublisher, ReleasedTime)
 	VALUES ('$title','$content','$username','$releasedtime')";
 
 	//echo $sql;

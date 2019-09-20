@@ -42,7 +42,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);
-$sql1="select RecordCode from voterecord where khtype=1";
+$sql1="select RecordCode from voterecord where khtype=1 and status='running' ";
 $rs = mysql_fetch_assoc(mysql_query($sql1, $connjxkh));
 $tableName="zc_ldcykhinfo_".$rs['RecordCode'];
 
@@ -56,29 +56,36 @@ $tableName="zc_ldcykhinfo_".$rs['RecordCode'];
 <body>
 <?php
 date_default_timezone_set('PRC');
+//获取用户账号
+$Account=$_SESSION['MM_Username'];
+header("Content-type:text/html;charset=utf-8");
+mysql_query('SET NAMES UTF8');
+//连接数据库
+mysql_select_db($database_connjxkh, $connjxkh);
 
-function isVoted($database_connjxkh, $connjxkh,$tableName){
-	mysql_select_db($database_connjxkh, $connjxkh);
-	$sql = "select count(*) from ".$tableName." where UserID = '".$_SESSION['MM_UserID']."'";
-	//echo $sql;
-	$rsVoteTime = mysql_query($sql, $connjxkh) or die(mysql_error());
-	$row_rsVoteTime = mysql_fetch_assoc($rsVoteTime);
-	$count = $row_rsVoteTime['count(*)'];
-	//print_r($row_rsVoteTime);
-	$cc = intval(floor($count/30))+1;
-	//echo '<script language="JavaScript">alert("'.$cc.'");</script>;';
-	if($count>0){
-		$cc = intval(floor($count/30))+1;
-		if($cc <5)
-		header("location:3-2018-".$cc.".php");
-		else{
-			echo '<script language="JavaScript">alert("已投票，正在跳转投票详情")</script>';
-			header("location:getvote1.php");
-		}
-	}
-	else header("location:3-2018-1.php");
-}
-isVoted($database_connjxkh, $connjxkh,$tableName);
+//查询用户所在的部门ID
+$sql01="select DeptID from userinfo where Account=$Account";
+$result01=mysql_fetch_assoc(mysql_query($sql01, $connjxkh));
+
+//查找每个部门中层领导的用户名和所属部门名称（条件：Rank=2或Rank=3,除了本部门）
+$sql = "SELECT Count(*) as usernum from userinformation where (LevelID=2 OR LevelID=3 ) AND userid NOT IN (SELECT bpuserid FROM zc_ldcykhinfo_472739 WHERE userid=".$_SESSION['MM_UserID'].") and DeptID != ".$result01['DeptID'];
+
+echo $sql;
+//获取结果集
+$result =mysql_query($sql, $connjxkh) or die(mysql_error());;
+$row_rs = mysql_fetch_assoc($result);
+$count = $row_rs['usernum'];
+echo $count ;
+
+if ($count<30)
+	if($count!=0)	
+	    header("location:3-2018-5.php");
+	else{
+		echo '<script language="JavaScript">alert("已投票，正在跳转投票详情")</script>';
+		header("location:getvote1.php");
+		}		
+else
+   	header("location:3-2018-1.php");
 ?>
 </body>
 </html>

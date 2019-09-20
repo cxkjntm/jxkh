@@ -24,8 +24,8 @@ $array= array();
 
 class Vote{
 
-    public $number;
-	public $voteitem;
+    public $value;
+	public $name;
  }
 	  
 
@@ -80,7 +80,7 @@ switch($count){
 foreach ($titles as $value) {
    //echo "$value <br>";
    //$sql="SELECT COUNT(".$votetablename.".".$title.") as count  FROM " . $votetablename ." WHERE ".$votetablename.".".$title."='".$value."'";
-   $sql="SELECT COUNT(".$votetablename.".".$title.") as count  FROM " . $votetablename ." WHERE  FIND_IN_SET('".$value."'  , ". $title." )";
+   $sql="SELECT COUNT(".$votetablename.".".$title.") as count  FROM " . $votetablename ." WHERE  FIND_IN_SET('".$value."'  , ". $title." ) and DeptID=".$deptid;
    //echo $sql;
    $rs_count=mysql_query($sql, $connjxkh) or die(mysql_error());
    $result_count=mysql_fetch_assoc($rs_count);

@@ -4,7 +4,7 @@
 if(isset($_POST['superid']))
 	$SuperID=$_POST['superid'];
 //echo $SuperID;
-$query_rsSuper=" Delete From SuperInfo  where SuperID=".$SuperID;
+$query_rsSuper=" Delete From superinfo  where SuperID=".$SuperID;
 //echo $query_rsSuper;
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);

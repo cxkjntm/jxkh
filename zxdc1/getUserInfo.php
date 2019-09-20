@@ -48,7 +48,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 	  $colname_rsUser1=$_SESSION['MM_Username'];
 	mysql_query('SET NAMES UTF8');  
 	mysql_select_db($database_connjxkh, $connjxkh);
-	$query_rsUser = sprintf("SELECT UserInfo.Account, UserInfo.UserID, UserInfo.UserName, UserInfo.Photo, DeptInfo.DeptName, LevelInfo.LevelName FROM DeptInfo, LevelInfo, UserInfo WHERE UserInfo.DeptID=DeptInfo.DeptID AND LevelInfo.LevelID=UserInfo.LevelID and  Account = %s ", GetSQLValueString($colname_rsUser1, "text"));
+	$query_rsUser = sprintf("SELECT userinfo.Account, userinfo.UserID, userinfo.UserName, userinfo.Photo, deptinfo.DeptName, levelinfo.LevelName FROM deptinfo, levelinfo, userinfo WHERE userinfo.DeptID=deptinfo.DeptID AND levelinfo.LevelID=userinfo.LevelID and  Account = %s ", GetSQLValueString($colname_rsUser1, "text"));
 	$rsUser = mysql_query($query_rsUser, $connjxkh) or die(mysql_error());	
 	$row_rsUser= mysql_fetch_assoc($rsUser);
 ?>

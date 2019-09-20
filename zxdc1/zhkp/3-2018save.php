@@ -39,7 +39,7 @@ $result=0;
 $y=0;
 $t=0;
 	for($x=0;$x<$length;$x=$x+4) {
-	 $result= mysql_query("INSERT ".$tableName." (UserID,BPUserID,DDJS,LDNL,LZJS,LXYZ) 
+	 $result= mysql_query("INSERT INTO ".$tableName." (UserID,BPUserID,DDJS,LDNL,LZJS,LXYZ) 
 	  values('".$UserID."','".$BPUserID[$t++]."','".$name[$x]."','".$name[$x+1]."','".$name[$x+2]."','".$name[$x+3]."')");
 	}
 	if (!$result) {

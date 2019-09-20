@@ -36,16 +36,16 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 if(isset($_GET['MenuName']))
 	$MenuName=$_GET['MenuName'];
 //echo $menuid;
-$sql="SELECT * from MenuInfo  where MenuName like '%".$MenuName."%'";
+$sql="SELECT * from menuinfo  where MenuName like '%".$MenuName."%'";
 //echo $sql;
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);
 $query_rsmenu =$sql;
 $rsmenu = mysql_query($query_rsmenu, $connjxkh) or die(mysql_error());
-// "SELECT * FROM MenuInfo";
+// "SELECT * FROM menuinfo";
 //$q_sql=mysql_query($sql);
 //while($res=mysql_fetch_assoc($q_sql)){
-$sql2="SELECT * from MenuInfo  where MenuName like '%".$MenuName."%'";
+$sql2="SELECT * from menuinfo  where MenuName like '%".$MenuName."%'";
 $q_sql2=mysql_query($sql2);
 $count=mysql_num_rows($q_sql2);
 //echo $count;

@@ -12,7 +12,7 @@
 	
 
 	mysql_select_db($database_connjxkh, $connjxkh);
-	$sql="INSERT INTO DeptInfo (DeptName, DeptMemo,IsBanned)
+	$sql="INSERT INTO deptinfo (DeptName, DeptMemo,IsBanned)
 	VALUES ('$deptname','$deptmemo',0)";
 
 	//echo $sql;

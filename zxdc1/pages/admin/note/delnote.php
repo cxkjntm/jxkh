@@ -36,7 +36,7 @@ if (isset($_POST['NoteID'])) {
   $colname_rsNote = $_POST['NoteID'];
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsNote = sprintf("Delete from NoteInfo WHERE NoteID = %s", GetSQLValueString($colname_rsNote, "int"));
+$query_rsNote = sprintf("Delete from noteinfo WHERE NoteID = %s", GetSQLValueString($colname_rsNote, "int"));
 //echo $query_rsNote;
 $Result = mysql_query($query_rsNote, $connjxkh) or die(mysql_error());
 if($Result)

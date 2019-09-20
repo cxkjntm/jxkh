@@ -84,7 +84,7 @@ require('logincheck.php');
 									<i class="iconfont">&#xe6a7;</i>
 									<cite>浏览用户</cite>
 								</a>
-							</li>
+							</li>	
 							<li>
 								<a target="iframe" href="user/adduser.php">
 									<i class="iconfont">&#xe6a7;</i>
@@ -102,7 +102,8 @@ require('logincheck.php');
 									<i class="iconfont">&#xe6a7;</i>
 									<cite>批量添加用户</cite>
 								</a>
-							</li>
+							</li>						
+                            
 						</ul>
 					</li>
 					<li>
@@ -126,8 +127,7 @@ require('logincheck.php');
 							</li>
                            
 						</ul>
-					</li>
-					
+					</li>					
 					<li>
 						<a href="javascript:;">
 							<i class="iconfont">&#xe6ce;</i>
@@ -225,37 +225,32 @@ require('logincheck.php');
 									<cite>添加新考核</cite>
 								</a>
 							</li>
-							<li>
-								<a target="iframe" href="result/selectvoteissue.php">
-									<i class="iconfont">&#xe6a7;</i>
-									<cite>平时调查结果展示</cite>
-								</a>
-							</li>
+						
 						</ul>
 					</li>
 					<li>
 						<a href="javascript:;">
 							<i class="iconfont">&#xe6ce;</i>
-							<cite>综合中层干部考核结果</cite>
+							<cite>中层考核结果</cite>
 							<i class="iconfont nav_right">&#xe697;</i>
 						</a>
 						<ul class="sub-menu">
 							<li>
-								<a target="iframe" href="grades_view/get_dept_grade.php">
+								<a target="iframe" href="result/selectvoteissue.php">
 									<i class="iconfont">&#xe6a7;</i>
-									<cite>领导班子考核结果量化</cite>
+									<cite>问卷调查结果展示</cite>
 								</a>
 							</li>
 							<li>
-								<a target="iframe" href="grades_view/get_person_grade.php">
+								<a target="iframe" href="result/selectvoteissue1.php">
 									<i class="iconfont">&#xe6a7;</i>
-									<cite>领导成员考核结果量化</cite>
+									<cite>年度综合考核结果</cite>
 								</a>
-							</li>
+							</li>							
 							<li>
 								<a target="iframe" href="../../voteinformation/admin_view.php">
 									<i class="iconfont">&#xe6a7;</i>
-									<cite>人员参与详情</cite>
+									<cite>年度考核人员参与详情</cite>
 								</a>
 							</li>
 						</ul>
@@ -263,7 +258,7 @@ require('logincheck.php');
 					<li>
 						<a href="javascript:;">
 							<i class="iconfont">&#xe6ce;</i>
-							<cite>考核通知</cite>
+							<cite>通知管理</cite>
 							<i class="iconfont nav_right">&#xe697;</i>
 						</a>
 						<ul class="sub-menu">
@@ -282,6 +277,7 @@ require('logincheck.php');
 							
 						</ul>
 					</li>
+					
 				</ul>
 			</div>
 		</div>

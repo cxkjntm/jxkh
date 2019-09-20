@@ -66,7 +66,7 @@ if($srand==$checkcode){
 	mysql_select_db($database_connjxkh, $connjxkh);
 	//职工登录
 	if($role == 2){
-		$query_rsUser = sprintf("SELECT * FROM UserInfo WHERE Account = %s ", GetSQLValueString($colname_rsUser1, "text"));
+		$query_rsUser = sprintf("SELECT * FROM userinfo WHERE Account = %s ", GetSQLValueString($colname_rsUser1, "text"));
 
 	}
 	//部门管理员登录

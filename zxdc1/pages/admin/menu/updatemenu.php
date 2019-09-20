@@ -41,7 +41,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE MenuInfo SET MenuName=%s, MenuMid=%s, Menu_URL=%s, Pare_Menu_ID=%s, `paixu`=%s, stats=%s WHERE MenuID=%s",
+  $updateSQL = sprintf("UPDATE menuinfo SET MenuName=%s, MenuMid=%s, Menu_URL=%s, Pare_Menu_ID=%s, `paixu`=%s, stats=%s WHERE MenuID=%s",
                        GetSQLValueString($_POST['MenuName'], "text"),
                        GetSQLValueString($_POST['MenuMid'], "int"),
                        GetSQLValueString($_POST['Menu_URL'], "text"),
@@ -63,13 +63,13 @@ if (isset($_GET['MenuID'])) {
   $colname_rsMenu = $_GET['MenuID'];
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsMenu = sprintf("SELECT * FROM MenuInfo WHERE MenuID = %s", GetSQLValueString($colname_rsMenu, "int"));
+$query_rsMenu = sprintf("SELECT * FROM menuinfo WHERE MenuID = %s", GetSQLValueString($colname_rsMenu, "int"));
 $rsMenu = mysql_query($query_rsMenu, $connjxkh) or die(mysql_error());
 $row_rsMenu = mysql_fetch_assoc($rsMenu);
 $totalRows_rsMenu = mysql_num_rows($rsMenu);
 
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsMainMenu = "SELECT * FROM MenuInfo WHERE Pare_Menu_ID = '0'";
+$query_rsMainMenu = "SELECT * FROM menuinfo WHERE Pare_Menu_ID = '0'";
 $rsMainMenu = mysql_query($query_rsMainMenu, $connjxkh) or die(mysql_error());
 $row_rsMainMenu = mysql_fetch_assoc($rsMainMenu);
 $totalRows_rsMainMenu = mysql_num_rows($rsMainMenu);

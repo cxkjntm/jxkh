@@ -35,7 +35,7 @@ $deptid=31;
 if(isset($_GET['DeptName']))
 	$DeptName=$_GET['DeptName'];
 //echo $deptid;
-$sql="SELECT * FROM DeptInfo  where DeptName like '%".$DeptName."%'";
+$sql="SELECT * FROM deptinfo  where DeptName like '%".$DeptName."%'";
 //echo $sql;
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);
@@ -43,7 +43,7 @@ $query_rsDept = $sql;
 $rsDept = mysql_query($query_rsDept, $connjxkh) or die(mysql_error());
 
 
-$sql2="SELECT * from DeptInfo  where DeptName like '%".$DeptName."%'";
+$sql2="SELECT * from deptinfo  where DeptName like '%".$DeptName."%'";
 $q_sql2=mysql_query($sql2);
 $count=mysql_num_rows($q_sql2);
 //echo $count;

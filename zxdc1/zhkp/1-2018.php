@@ -138,8 +138,8 @@ for($i=0;$i<6;$i++){
 //连接数据库
 mysql_select_db($database_connjxkh, $connjxkh);
 
-//查询用户、用户所属部门ID和用户ＩＤ（条件:Rank=2）
-$sql = "SELECT UserName,DeptID,UserID FROM userinfo where Rank='2'";
+//查询用户、用户所属部门ID和用户ＩＤ（条件:LevelID=2）
+$sql = "SELECT UserName,DeptID,UserID FROM userinfo where LevelID='2'";
 
 
 

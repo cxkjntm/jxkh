@@ -48,11 +48,11 @@ if (!function_exists("GetSQLValueString")) {
 }
 mysql_select_db($database_connjxkh, $connjxkh);
 //查询共有多少位中层领导需要参加考核
-$sql02="SELECT COUNT(*) as num FROM userinfo WHERE Rank=2 OR Rank=3";
+$sql02="SELECT COUNT(*) as num FROM userinfo WHERE LevelID=2 OR LevelID=3";
 $result02 = mysql_fetch_assoc(mysql_query($sql02, $connjxkh));
 
 //查询参与考核的校领导有几人
-$sql03="SELECT COUNT(UserID) as num FROM userinfo WHERE Rank=1 and DeptID=0;";
+$sql03="SELECT COUNT(UserID) as num FROM userinfo WHERE LevelID=1 and DeptID=0;";
 $result03 = mysql_fetch_assoc(mysql_query($sql03, $connjxkh));
 
 //获取表名
@@ -74,7 +74,7 @@ $tableName02="qz_ldbzkhinfo_".$rs['RecordCode'];
  *分项一：校领导评测得分（20%）
  */
 //查询校级领导ID
-$sql04="select UserID from userinfo where DeptID=0 and Rank=1";
+$sql04="select UserID from userinfo where DeptID=0 and LevelID=1";
 $result04 = mysql_query($sql04, $connjxkh);
 while($row01=mysql_fetch_row($result04)){
 	for($i=1;$i<=46;$i++){
@@ -99,7 +99,7 @@ while($row01=mysql_fetch_row($result04)){
  */
  for($i=1;$i<=46;$i++){
 	//查询本单位职工ID
-	$sql06="SELECT UserID FROM userinfo WHERE Rank=4 AND DeptID=$i;";
+	$sql06="SELECT UserID FROM userinfo WHERE LevelID=4 AND DeptID=$i;";
 	$result06 = mysql_query($sql06, $connjxkh);
 	while($row02=mysql_fetch_row($result06)){
 		for($j=0;$j<4;$j++){
@@ -118,19 +118,18 @@ while($row01=mysql_fetch_row($result04)){
  }
 
 /**
- *处级领导班子考核结果量化
- *分项三：教学单位与机关部门互评得分（20%）
+ *处级领导班子考核结果量化 *分项三：教学单位与机关部门互评得分（20%）
  */
 for($i=1;$i<=46;$i++){
 	//统计几位中层领导，参与中层领导班子互评
 	$sql08="SELECT COUNT(DISTINCT z.UserID) FROM $tableName01 z,userinfo u
-				WHERE z.UserID = u.UserID AND (Rank=3 OR Rank=2);";
+				WHERE z.UserID = u.UserID AND (LevelID=3 OR LevelID=2);";
 	$result08 = mysql_query($sql08, $connjxkh);
 	while($row03=mysql_fetch_row($result08)){
 		for($j=0;$j<4;$j++){
 			//统计本单位职工对本单位领导班子评价优秀、称职、基本称职、不称职的票数
 			$sql09="SELECT COUNT(ZHKH) FROM zc_ldbzkhinfo_472739 z,userinfo u
-					WHERE z.UserID = u.UserID AND (Rank=3 OR Rank=2) AND (z.ZHKH=$j AND z.DeptID=$i)";
+					WHERE z.UserID = u.UserID AND (LevelID=3 OR LevelID=2) AND (z.ZHKH=$j AND z.DeptID=$i)";
 			$result09=mysql_fetch_assoc(mysql_query($sql09, $connjxkh));
 			//优秀票数/总票数=优秀率
 			$a03[$j]=$result09/$result08['num'];

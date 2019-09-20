@@ -55,7 +55,7 @@ $result08= mysql_fetch_assoc(mysql_query($sql08, $connjxkh));
 $DeptID=$result08['DeptID'];
 
 //查询共有多少位普通职工需要参加考核
-$sql01="SELECT COUNT(*) as num FROM userinfo WHERE Rank=4 and DeptID = $DeptID";
+$sql01="SELECT COUNT(*) as num FROM userinfo WHERE LevelID=4 and DeptID = $DeptID";
 $result01 = mysql_fetch_assoc(mysql_query($sql01, $connjxkh));
 
 //获取表名
@@ -70,7 +70,7 @@ $result03 = mysql_fetch_assoc(mysql_query($sql03, $connjxkh));
 
 
 //查询共有多少位中层领导被考核
-$sql05="SELECT COUNT(UserID) as num FROM userinfo WHERE (Rank=2 or Rank=3) and DeptID = $DeptID";
+$sql05="SELECT COUNT(UserID) as num FROM userinfo WHERE (LevelID=2 or LevelID=3) and DeptID = $DeptID";
 $result05 = mysql_fetch_assoc(mysql_query($sql05, $connjxkh));
 ?>
 </head>

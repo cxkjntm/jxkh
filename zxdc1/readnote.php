@@ -46,7 +46,7 @@ if (isset($_GET['NoteID'])) {
   $colname_rsnote = $_GET['NoteID'];
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsnote = sprintf("SELECT * FROM NoteInfo WHERE NoteID = %s", GetSQLValueString($colname_rsnote, "int"));
+$query_rsnote = sprintf("SELECT * FROM noteinfo WHERE NoteID = %s", GetSQLValueString($colname_rsnote, "int"));
 $query_limit_rsnote = sprintf("%s LIMIT %d, %d", $query_rsnote, $startRow_rsnote, $maxRows_rsnote);
 $rsnote = mysql_query($query_limit_rsnote, $connjxkh) or die(mysql_error());
 $row_rsnote = mysql_fetch_assoc($rsnote);

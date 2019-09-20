@@ -28,7 +28,7 @@ $_SESSION["MM_VoteIssue"]=$voteissue ;
 
   <div class="layui-row">   
     <div class="layui-col-md8 ">
-      <form class="layui-form layui-form-pane"  method="post" action="viewresult.php">      
+      <form class="layui-form layui-form-pane"  method="post" action="">      
         <div class="layui-form-item">
           <label class="layui-form-label">部门</label>
           <div class="layui-input-block">

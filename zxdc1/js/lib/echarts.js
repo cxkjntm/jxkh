@@ -14688,7 +14688,7 @@ function createPathProxyFromString(data) {
                 case 'A':
                     rx = p[off++];
                     ry = p[off++];
-                    psi = p[off++];
+                    psi = p[off++];
                     fa = p[off++];
                     fs = p[off++];
 

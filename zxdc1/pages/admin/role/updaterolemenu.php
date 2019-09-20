@@ -62,7 +62,7 @@ if (isset($_GET['ID'])) {
   $colname_rsRoleMenu = (get_magic_quotes_gpc()) ? $_GET['ID'] : addslashes($_GET['ID']);
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsRoleMenu = sprintf("SELECT MenuInfo.MenuName, MenuInfo.Menu_URL, MenuInfo.Pare_Menu_ID, MenuInfo.MenuMid, LevelInfo.LevelName, Role_Menu.id, Role_Menu.role_id,Role_Menu.menu_id,Role_Menu.status FROM Role_Menu, MenuInfo, LevelInfo WHERE Role_Menu.status = 0 AND LevelInfo.LevelID=Role_Menu.role_id AND MenuInfo.MenuID=Role_Menu.menu_id AND Role_Menu.`id`= %s", $colname_rsRoleMenu);
+$query_rsRoleMenu = sprintf("SELECT menuinfo.MenuName, menuinfo.Menu_URL, menuinfo.Pare_Menu_ID, menuinfo.MenuMid, levelinfo.LevelName, role_menu.id, role_menu.role_id,role_menu.menu_id,role_menu.status FROM role_menu, menuinfo, levelinfo WHERE role_menu.status = 0 AND levelinfo.LevelID=role_menu.role_id AND menuinfo.MenuID=role_menu.menu_id AND role_menu.`id`= %s", $colname_rsRoleMenu);
 $rsRoleMenu = mysql_query($query_rsRoleMenu, $connjxkh) or die(mysql_error());
 $row_rsRoleMenu = mysql_fetch_assoc($rsRoleMenu);
 $totalRows_rsRoleMenu = mysql_num_rows($rsRoleMenu);

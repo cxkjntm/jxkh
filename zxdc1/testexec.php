@@ -1,0 +1,3 @@
+<?php
+EXEC("EXECSQL.BAT");
+?>

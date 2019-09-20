@@ -8,9 +8,9 @@ $Account=$_SESSION['MM_Username'];
 mysql_select_db($database_connjxkh, $connjxkh);
 
 //查询用户等级
-$mysql="select LevelID from userinfo where account='".$Account."'";
+$mysql="select LevelID, IsDB from userinfo where account='".$Account."'";
 $rs = mysql_fetch_assoc(mysql_query($mysql, $connjxkh));
-
+$isdb=$rs['IsDB'];
 //查询对应用户等级的菜单
 $mysql01="SELECT r.menu_id,m.MenuName,m.Menu_URL,m.Pare_Menu_ID FROM role_menu r,menuinfo m
 			WHERE r.menu_id=m.MenuID AND role_id=".$rs['LevelID'];

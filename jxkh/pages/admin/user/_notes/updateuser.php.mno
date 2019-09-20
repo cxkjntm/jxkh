@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsUser" value="name:UserID;datatype:int,name:UserName;datatype:string,name:Passwd;datatype:string,name:Photo;datatype:string,name:DeptID;datatype:int,name:Rank;datatype:int,name:IsEvaluated;datatype:int,name:IsPj;datatype:int" />
+	<infoitem key="UD_rsRank" value="name:LevelID;datatype:int,name:LevelName;datatype:string" />
+	<infoitem key="UD_rsDept" value="name:DeptID;datatype:int,name:DeptName;datatype:string,name:DeptMemo;datatype:string" />
+	<infoitem key="UD_rsUserDept" value="name:DeptID;datatype:int,name:DeptName;datatype:string,name:DeptMemo;datatype:string" />
+	<infoitem key="UD_rsUserRank" value="name:LevelID;datatype:int,name:LevelName;datatype:string" />
+</info>

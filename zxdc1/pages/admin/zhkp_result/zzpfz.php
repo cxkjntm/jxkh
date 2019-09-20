@@ -48,11 +48,11 @@ if (!function_exists("GetSQLValueString")) {
 }
 mysql_select_db($database_connjxkh, $connjxkh);
 //查询共有多少位中层正职领导需要参加考核
-$sql02="SELECT COUNT(*) as num FROM userinfo WHERE Rank=2";
+$sql02="SELECT COUNT(*) as num FROM userinfo WHERE LevelID=2";
 $result02 = mysql_fetch_assoc(mysql_query($sql02, $connjxkh));
 
 //查询共有多少位中层副职被考核
-$sql03="SELECT COUNT(*) as num FROM userinfo WHERE Rank=3;";
+$sql03="SELECT COUNT(*) as num FROM userinfo WHERE LevelID=3;";
 $result03 = mysql_fetch_assoc(mysql_query($sql03, $connjxkh));
 
 //获取表名
@@ -113,7 +113,7 @@ $result05 = mysql_fetch_assoc(mysql_query($sql05, $connjxkh));
 mysql_query('SET NAMES UTF8');
 //查询中层副职被考核的结果
 $sql = "SELECT u.UserName,q.ZZSX,q.GZNL,q.GZZF,q.YFBS,q.LXYZ,q.LJZV,q.ZTPJ
-FROM $tableName q,userinfo u WHERE q.BPUserID=u.UserID AND u.Rank=3;";
+FROM $tableName q,userinfo u WHERE q.BPUserID=u.UserID AND u.LevelID=3;";
 $result =mysql_query($sql, $connjxkh);
 
  while($row=mysql_fetch_row($result)){    

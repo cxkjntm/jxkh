@@ -40,7 +40,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE NoteInfo SET NoteTitle=%s, NoteContent=%s, NotePublisher=%s, ReleasedTime=%s WHERE NoteID=%s",
+  $updateSQL = sprintf("UPDATE noteinfo SET NoteTitle=%s, NoteContent=%s, NotePublisher=%s, ReleasedTime=%s WHERE NoteID=%s",
                        GetSQLValueString($_POST['NoteTitle'], "text"),
                        GetSQLValueString($_POST['NoteContent'], "text"),
                        GetSQLValueString($_POST['NotePublisher'], "text"),
@@ -61,7 +61,7 @@ if (isset($_GET['NoteID'])) {
   $colname_rsNote = $_GET['NoteID'];
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsNote = sprintf("SELECT * FROM NoteInfo WHERE NoteID = %s", GetSQLValueString($colname_rsNote, "int"));
+$query_rsNote = sprintf("SELECT * FROM noteinfo WHERE NoteID = %s", GetSQLValueString($colname_rsNote, "int"));
 $rsNote = mysql_query($query_rsNote, $connjxkh) or die(mysql_error());
 $row_rsNote = mysql_fetch_assoc($rsNote);
 $totalRows_rsNote = mysql_num_rows($rsNote);

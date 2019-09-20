@@ -35,11 +35,11 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 //$sql="SELECT * from UserInfo  ";
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsrole = " Select * from LevelInfo ";
+$query_rsrole = " Select * from levelinfo ";
 //echo $query_rsrole;
 $rsrole = mysql_query($query_rsrole, $connjxkh) or die(mysql_error());
 
-$sql2="SELECT * from LevelInfo";
+$sql2="SELECT * from levelinfo";
 $q_sql2=mysql_query($sql2);
 $count=mysql_num_rows($q_sql2);
 $arr=array();

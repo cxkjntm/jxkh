@@ -41,7 +41,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE DeptInfo SET DeptName=%s, DeptMemo=%s, IsBanned=%s WHERE DeptID=%s",
+  $updateSQL = sprintf("UPDATE deptinfo SET DeptName=%s, DeptMemo=%s, IsBanned=%s WHERE DeptID=%s",
                        GetSQLValueString($_POST['DeptName'], "text"),
                        GetSQLValueString($_POST['DeptMemo'], "text"),
                        GetSQLValueString($_POST['IsBanned'], "int"),
@@ -59,7 +59,7 @@ if (isset($_GET['DeptID'])) {
   $colname_rsDept = $_GET['DeptID'];
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsDept = sprintf("SELECT * FROM DeptInfo WHERE DeptID = %s", GetSQLValueString($colname_rsDept, "int"));
+$query_rsDept = sprintf("SELECT * FROM deptinfo WHERE DeptID = %s", GetSQLValueString($colname_rsDept, "int"));
 $rsDept = mysql_query($query_rsDept, $connjxkh) or die(mysql_error());
 $row_rsDept = mysql_fetch_assoc($rsDept);
 $totalRows_rsDept = mysql_num_rows($rsDept);

@@ -33,7 +33,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsIssue = "SELECT * FROM voteRecord where status='Finished'";
+$query_rsIssue = "SELECT * FROM voterecord where status='Finished' and khtype=0 ";
 $rsIssue = mysql_query($query_rsIssue, $connjxkh) or die(mysql_error());
 $row_rsIssue = mysql_fetch_assoc($rsIssue);
 $totalRows_rsIssue = mysql_num_rows($rsIssue);

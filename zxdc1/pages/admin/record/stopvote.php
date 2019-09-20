@@ -5,7 +5,7 @@ header("Content-type:text/html;charset=utf-8");
 if(isset($_POST['recordcode']))
 	$recordcode=$_POST['recordcode'];
 //echo $recordcode;
-$query_rsVoteRecord=" Update voteRecord Set status='2'  where RecordCode=".$recordcode;
+$query_rsVoteRecord=" Update voterecord Set status='2'  where RecordCode=".$recordcode;
 //echo $query_rsVoteRecord;
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);

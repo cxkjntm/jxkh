@@ -10,6 +10,29 @@
 </head>
 
 <body>
+
+<div class="my-btn-box">    
+    <span class="fr">
+        <div class="demoTable">
+            <span class="layui-form-label">搜索类型：</span>
+            <!--// 搜索ID：-->
+         <div class="layui-inline">
+         
+         <select name="xctype" id="xctype"   lay-verify="required" lay-filter="xctype">
+              <option value="0">请选择搜索类型</option>
+              <option value="1">工号</option>
+              <option value="2">用户名</option>
+              <option value="3">职级</option>              
+            </select>
+        </div>
+        <div class="layui-inline">
+         <input class="layui-input" name="id" id="demoReload" autocomplete="off" placeholder="请输入搜索条件">
+        </div>
+        <button class="layui-btn" data-type="reload">查询</button>
+        </div>
+    </span>
+</div>
+
 <table class="layui-hide" id="test" lay-filter="test"></table>
 <script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -25,7 +48,7 @@ layui.use(['table', 'layer', 'form'], function(){
   //第一个实例
   table.render({
     elem: '#test'
-    ,height: 482
+    ,height: 582
     ,url: 'dept_user_data.php' //数据接口
     ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
       layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
@@ -36,15 +59,74 @@ layui.use(['table', 'layer', 'form'], function(){
       
     }
     ,cols: [[ //表头
-	  {field: 'Account', title: '账号', width:100,sort: true, fixed: 'left'}
-      ,{field: 'UserName', title: '姓名', width:200}
-      ,{field: 'DeptName', title: '所属部门', width:300}
-      ,{field: 'LevelName', title: '职级', width:200}  
+	  {field: 'Account', title: '工号', width:100,sort: true, fixed: 'left'}
+      ,{field: 'UserName', title: '姓名', width:150}
+      ,{field: 'DeptName', title: '所属部门', width:200}
+      ,{field: 'LevelName', title: '职级', width:100}  
+	  ,{field: 'IsDB', title: '考核小组', width:100}
 	   ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}       
     ]]
   });
-  
-  
+	
+	   form.on('select(xctype)', function (data) {
+                //optionStr="";
+                var value = data.value;
+				alert(value);
+				console.log(data.elem); //得到select原始DOM对象
+                switch (value){
+					
+					case 1:{
+						$('#demoReload').html("请输入工号");
+						break;
+					}
+					case 2:{
+						$('#demoReload').html("请输入用户名");
+						break;
+					}
+					case 3:{
+						$('#demoReload').html("请输入职级");
+						break;
+					}
+					default:{
+						$('#demoReload').html("请输入工号");
+						break;
+						}	
+					}
+				form.render();
+            });
+	
+			//搜索功能的实现
+        $('.demoTable .layui-btn').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        var $ = layui.$, active = {
+            reload: function () {
+                var demoReload = $('#demoReload').val();
+				var xctype= $('#xctype').val();
+				//alert(xctype);
+				//layer.msg(demoReload);
+
+                //执行重载
+                table.reload('test',
+                          {
+							page:
+                                  {
+                                      curr: 1 //重新从第 1 页开始
+                                  }
+                        
+                        , url: 'getuser.php?xctj='+demoReload+"&xctype="+xctype //后台做模糊搜索接口路径
+                          });
+            }
+        };
+        
+
+        // 刷新表格
+        $('#btn-refresh').on('click', function () {
+            tableIns.reload()
+        });
+		
   //监听行工具事件
   table.on('tool(test)', function(obj){
     var data = obj.data;

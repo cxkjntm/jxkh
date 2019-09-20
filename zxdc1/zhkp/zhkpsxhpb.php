@@ -79,14 +79,14 @@ mysql_select_db($database_connjxkh, $connjxkh);
 $sql = "SELECT DeptName,DeptID FROM deptinfo where DeptMemo like '%院部%' ";
 
 $result =mysql_query($sql, $connjxkh);
-$rs=mysql_fetch_array($result);
+//$rs=mysql_fetch_array($result);
  while($row=mysql_fetch_row($result)){          //While()的作用是将指针向后移动，将下一行的数据交给$row
 		echo "<tr><td>".$row[0]."</td>";
 		echo "<input name='DeptID' type='hidden' value='".$row[1]."' />";
 		echo '<td><div class="layui-input-inline">
       <select name="manyi">
         <option value="0">非常满意</option>
-        <option value="1" >满意</option>
+        <option value="1"  selected = "selected">满意</option>
         <option value="2">基本满意</option>
         <option value="3">不满意</option>
       </select>

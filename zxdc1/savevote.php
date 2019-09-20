@@ -99,7 +99,7 @@ if (!isset($_SESSION)) {
 	
 
 	mysql_select_db($database_connjxkh, $connjxkh);
-	$VoteTableName="voteRecord_".$_SESSION['MM_VoteIssue'];
+	$VoteTableName="pswjdc_".$_SESSION['MM_VoteIssue'];
 	$sql="INSERT INTO  ".$VoteTableName."  (UserID, DeptID, voteTime, voteIssue, ";
 	$sql=$sql."zcgbztpj1, jcgbztpj2, zggbztpj3, zcbzjgpj4, zcgbzfpj5, ";
 	$sql=$sql."zcbzzxpj6, zcbzjcpj7, zcbzyx8, zcgbyspj9, zcgbmzys10, ";
@@ -113,7 +113,7 @@ if (!isset($_SESSION)) {
 	$sql=$sql.$zcgbzdj16."', '".$zcgbgzzt17."','".$szydyxqk18."', '".$zcgbzfjs19."', '".$zcgbsztg20."', '";
 	$sql=$sql.$zcgbblzf21."', '".$zcgbcyzd22."', '".$zcgbzfjq23."', '".$zcgbzfjy24."' )";
 	
-	//echo $sql;
+	echo $sql;
 	//mysql_query($sql,$connjxkh);
 	//$json_obj= json_encode(array('code'=>200));	
 	if (!mysql_query($sql,$connjxkh))

@@ -89,7 +89,7 @@ mysql_select_db($database_connjxkh, $connjxkh);
 
 
 //查找每个部门中层领导的用户名和所属部门名称（条件：Rank=2或Rank=3）
-$sql = "SELECT UserID,UserName,DeptName,DeptInfo.DeptID FROM DeptInfo, UserInfo WHERE UserInfo.DeptID=DeptInfo.DeptID AND Rank<4 LIMIT 0,30";
+$sql = "SELECT UserID,UserName,DeptName,deptinfo.DeptID FROM deptinfo, userinfo WHERE userinfo.DeptID=deptinfo.DeptID AND Rank<4 LIMIT 0,30";
 
 //获取结果集
 $result =mysql_query($sql, $connjxkh);

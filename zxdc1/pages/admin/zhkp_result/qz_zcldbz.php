@@ -49,7 +49,7 @@ if (!function_exists("GetSQLValueString")) {
 }
 mysql_select_db($database_connjxkh, $connjxkh);
 //查询共有多少位普通职工需要参加考核
-$sql01="SELECT COUNT(*) as num FROM userinfo WHERE Rank=4";
+$sql01="SELECT COUNT(*) as num FROM userinfo WHERE LevelID=4";
 $result01 = mysql_fetch_assoc(mysql_query($sql01, $connjxkh));
 
 //获取表名

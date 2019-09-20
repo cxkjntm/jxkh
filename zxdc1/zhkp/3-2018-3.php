@@ -60,13 +60,12 @@ if (!function_exists("GetSQLValueString")) {
             	<tr>
                 	<td rowspan="2"  align = "center" >单位</td>
                 	<td align = "center" width = "%150">姓名</td>
+                	<td align = "center" width = "%150">&nbsp;</td>
                 	<td colspan="1"  align = "center" >综合考核评价意见</td>
                 	<td colspan="1"  align = "center" >干部履职情况评价意见</td>
                 	<td colspan="1"  align = "center" >参加“两学一做”学习教育情况评价意见</td>
                 	<td colspan="1"  align = "center" >党风廉政建设和反腐败工作评价意见</td>
-                	
             	</tr> 
-             	
             </thead>
             <tbody align="center">
 <?php
@@ -94,6 +93,7 @@ while($row_rsUser = mysql_fetch_array($result))
 	//输出用户名、部门名
 	echo"<td>".$row_rsUser['DeptName']."</td>";
 	echo"<td>".$row_rsUser['UserName']."</td>";
+	echo"<td><input name='tea' type='image' src='../".$row_rsUser['Photo']."' height='105' width='105'/></td>";
 	echo "<input name='BPUserID' type='hidden' value='".$row_rsUser['UserID']."' />";
 	echo "<input name='DeptID' type='hidden' value='".$row_rsUser['DeptID']."' />";
 	//设置单选组
@@ -116,7 +116,8 @@ $_SESSION['count'] = 90;
 $_SESSION['cc'] = 4;
 ?>
             </tbody>
-		</table><br>
+		</table>
+		<br>
 		<div class="layui-form-item layui-col-xs-offset6">
         	<input class="layui-btn" type="button" onclick="test()" value="下一页"/>
         </div>

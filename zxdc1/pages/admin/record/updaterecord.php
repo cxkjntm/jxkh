@@ -44,7 +44,7 @@ mysql_query('SET NAMES UTF8');
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 	
-  $updateSQL = sprintf("UPDATE voteRecord SET RecordName=%s,  starttime=%s, endtime=%s WHERE RecordCode=%s",
+  $updateSQL = sprintf("UPDATE voterecord SET RecordName=%s,  starttime=%s, endtime=%s WHERE RecordCode=%s",
                        GetSQLValueString($_POST['RecordName'], "text"),                      
                        GetSQLValueString($_POST['starttime'], "text"),
                        GetSQLValueString($_POST['endtime'], "text"),					   
@@ -61,7 +61,7 @@ if (isset($_GET['RecordCode'])) {
   $colname_rsRecord = $_GET['RecordCode'];
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsRecord = "SELECT * FROM voteRecord WHERE RecordCode =".$colname_rsRecord;
+$query_rsRecord = "SELECT * FROM voterecord WHERE RecordCode =".$colname_rsRecord;
 $rsRecord = mysql_query($query_rsRecord, $connjxkh) or die(mysql_error());
 $row_rsRecord = mysql_fetch_assoc($rsRecord);
 $totalRows_rsRecord = mysql_num_rows($rsRecord);

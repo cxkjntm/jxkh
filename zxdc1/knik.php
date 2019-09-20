@@ -3,7 +3,7 @@
 	if (!isset($_SESSION)) {
 	session_start();
 	}
-	$query_rsUser = "SELECT * FROM UserInfo WHERE account = ".$_SESSION['MM_Username'];
+	$query_rsUser = "SELECT * FROM userinfo WHERE account = ".$_SESSION['MM_Username'];
 	$rsUser = mysql_query($query_rsUser, $connjxkh) or die(mysql_error());	
 	$row_rsUser= mysql_fetch_assoc($rsUser);
 	$count=mysql_num_rows($rsUser);

@@ -36,11 +36,11 @@ $limit=20;//$_GET['limit'];
 //$sql="SELECT * from UserInfo  ";
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsnote = "SELECT * from NoteInfo  order by NoteID Desc limit ".($page-1)*$limit.",".$limit;
+$query_rsnote = "SELECT * from noteinfo  order by NoteID Desc limit ".($page-1)*$limit.",".$limit;
 //echo $query_rsnote;
 $rsnote = mysql_query($query_rsnote, $connjxkh) or die(mysql_error());
 
-$sql2="SELECT * from NoteInfo";
+$sql2="SELECT * from noteinfo";
 $q_sql2=mysql_query($sql2);
 $count=mysql_num_rows($q_sql2);
 $arr=array();

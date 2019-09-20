@@ -36,7 +36,7 @@ $limit=$_GET['limit'];
 //$sql="SELECT * from UserInfo  ";
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsrecord = "SELECT * from voteRecord  limit ".($page-1)*$limit.",".$limit;
+$query_rsrecord = "SELECT * from voterecord  limit ".($page-1)*$limit.",".$limit;
 //echo $query_rsrecord;
 $rsrecord = mysql_query($query_rsrecord, $connjxkh) or die(mysql_error());
 

@@ -90,7 +90,7 @@ function isVoted($tablename,$database_connjxkh, $connjxkh){
 		
 }
 
-function checkvote($$totalRows_rsVoteTime,$url){
+function checkvote($totalRows_rsVoteTime,$url){
 
 	if ($totalRows_rsVoteTime>0){
 
@@ -132,7 +132,7 @@ function checkvote($$totalRows_rsVoteTime,$url){
 }
 
 $url="zcldhp_bz.php";
-checkvote($$totalRows_rsVoteTime,$url);
+checkvote($totalRows_rsVoteTime,$url);
 
 ?>
 </body>

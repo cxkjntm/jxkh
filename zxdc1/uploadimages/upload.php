@@ -54,7 +54,7 @@ $okType=false;
   // echo "上传文件大小是：".$size."<br/>"; 
   // echo "上传后系统返回的值是：".$error."<br/>"; 
   // echo "上传文件的临时存放路径是：".$tmp_name."<br/>"; 
-  $path="D:/apps/xampp/htdocs/zxdc1/upload/".$name;
+  $path="../upload/".$name;
 //把上传的临时文件移动到upload目录下面(upload是在根目录下已经创建好的！！！) 
   move_uploaded_file($tmp_name, iconv("UTF-8","gb2312", $path)); 
   $destination="../upload/".$name; 

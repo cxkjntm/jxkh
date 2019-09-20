@@ -58,12 +58,12 @@ if (!function_exists("GetSQLValueString")) {
             	<tr>
                 	<td rowspan="2"  align = "center" >单位</td>
                 	<td align = "center" >姓名</td>
+                	<td align = "center" >&nbsp;</td>
                 	<td colspan="1"  align = "center" >综合考核评价意见</td>
                 	<td colspan="1"  align = "center" >干部履职情况评价意见</td>
                 	<td colspan="1"  align = "center" >参加“两学一做”学习教育情况评价意见</td>
                 	<td colspan="1"  align = "center" >党风廉政建设和反腐败工作评价意见</td>
             	</tr> 
-         
             </thead>
             <tbody align="center">
 <?php
@@ -76,8 +76,9 @@ $sql01="select DeptID from userinfo where Account=$Account";
 $result01=mysql_fetch_assoc(mysql_query($sql01, $connjxkh));
 
 //查找每个部门中层领导的用户名和所属部门名称（条件：Rank=2或Rank=3,除了本部门）
-$sql = "SELECT * from userinformation where (LevelID=2 OR LevelID=3 ) and DeptID != '".$result01['DeptID']."' LIMIT 0,30";
-
+$sql = "SELECT * from userinformation where (LevelID=2 OR LevelID=3 ) AND userid NOT IN (SELECT bpuserid FROM zc_ldcykhinfo_472739 WHERE userid=".$_SESSION['MM_UserID'].") and DeptID != '".$result01['DeptID']."' LIMIT 0,30";
+//SELECT Userid FROM userinformation WHERE levelid=2 OR levelid=3 AND userid NOT IN (SELECT bpuserid FROM zc_ldcykhinfo_472739 WHERE userid=961 ) LIMIT 0,30 
+//echo $sql;
 //获取结果集
 $result =mysql_query($sql, $connjxkh);
 
@@ -88,6 +89,7 @@ while($row_rsUser = mysql_fetch_array($result))
 	//输出用户名、部门名
 	echo"<td>".$row_rsUser['DeptName']."</td>";
 	echo"<td>".$row_rsUser['UserName']."</td>";
+	echo"<td><input name='tea' type='image' src='../".$row_rsUser['Photo']."' height='105' width='105'/></td>";
 	echo "<input name='BPUserID' type='hidden' value='".$row_rsUser['UserID']."' />";
 	echo "<input name='DeptID' type='hidden' value='".$row_rsUser['DeptID']."' />";
 	//设置单选组
@@ -95,7 +97,7 @@ while($row_rsUser = mysql_fetch_array($result))
 		echo '<td><div class="layui-input-inline">
 		<select name="manyi">
         <option value="0">非常满意</option>
-        <option value="1" >满意</option>
+        <option value="1" selected = "selected" >满意</option>
         <option value="2">基本满意</option>
         <option value="3">不满意</option>
       </select>
@@ -109,7 +111,8 @@ mysql_close($connjxkh);
 
 ?>
             </tbody>
-		</table><br>
+		</table>
+		<br>
 		<div class="layui-form-item layui-col-xs-offset6">
         	<input  class="layui-btn" type="button" onclick="test()" value="下一页"/>
         </div>
@@ -152,7 +155,7 @@ mysql_close($connjxkh);
 	      success:function(data){
 	        if(data.code==200){
 	          	//alert("保存成功！");
-				window.location.href="3-2018-2.php";
+				window.location.href="checkvote1.php";
 	        }else{
 				alert("保存失败！");
 	        }

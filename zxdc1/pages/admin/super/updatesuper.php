@@ -44,7 +44,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 	$t_hasher = new PasswordHash(8, FALSE);	 
 	$newpassword=$t_hasher->HashPassword($_POST['SuperPwd']);
-  $updateSQL = sprintf("UPDATE SuperInfo SET SuperName=%s, SuperPwd=%s, SuperMemo=%s WHERE SuperID=%s",
+  $updateSQL = sprintf("UPDATE superinfo SET SuperName=%s, SuperPwd=%s, SuperMemo=%s WHERE SuperID=%s",
                        GetSQLValueString($_POST['SuperName'], "text"),
                        GetSQLValueString($newpassword, "text"),
                        GetSQLValueString($_POST['SuperMemo'], "text"),
@@ -63,7 +63,7 @@ if (isset($_GET['SuperID'])) {
   $colname_rsSuper = $_GET['SuperID'];
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsSuper = sprintf("SELECT * FROM SuperInfo WHERE SuperID = %s", GetSQLValueString($colname_rsSuper, "int"));
+$query_rsSuper = sprintf("SELECT * FROM superinfo WHERE SuperID = %s", GetSQLValueString($colname_rsSuper, "int"));
 $rsSuper = mysql_query($query_rsSuper, $connjxkh) or die(mysql_error());
 $row_rsSuper = mysql_fetch_assoc($rsSuper);
 $totalRows_rsSuper = mysql_num_rows($rsSuper);

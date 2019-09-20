@@ -6,9 +6,9 @@ if (!isset($_SESSION)) {
 $Account = $_POST['Account'];
 mysql_select_db($database_connjxkh, $connjxkh);
 //执行更新语句
-$sql01="delete from userinfo where Account=".$Account;
+$sql01="delete from userinfo where Account='".$Account."'";
 		$result01= mysql_query($sql01);
-	if(!$result) {
+	if(!$result01) {
 		$json_obj= json_encode(array('code'=>400));	
  	}
 	else{

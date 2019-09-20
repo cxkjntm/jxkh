@@ -42,22 +42,22 @@ $limit=$_GET['limit'];
 //echo $xctj;
 //echo "<br>";
 //echo $xctype;
-$sql="SELECT UserInfo.Account, UserInfo.UserID, UserInfo.UserName, UserInfo.Photo, DeptInfo.DeptName, LevelInfo.LevelName FROM DeptInfo, LevelInfo, UserInfo WHERE UserInfo.DeptID=DeptInfo.DeptID AND LevelInfo.LevelID=UserInfo.LevelID ";
+$sql="SELECT userinfo.Account, userinfo.UserID, userinfo.UserName, userinfo.Photo, deptinfo.DeptName, levelinfo.LevelName FROM deptinfo, levelinfo, userinfo WHERE userinfo.DeptID=deptinfo.DeptID AND levelinfo.LevelID=userinfo.LevelID  ";
 $sql1=$sql;
 switch ($xctype){
 	case 1:{
-		$sql=$sql."and UserInfo.Account=".$xctj." limit ".($page-1)*$limit.",".$limit;
-		$sql1=$sql1."and UserInfo.Account=".$xctj;
+		$sql=$sql."and userinfo.Account=".$xctj." limit ".($page-1)*$limit.",".$limit;
+		$sql1=$sql1."and userinfo.Account=".$xctj;
 		break;
 		}
 	case 2:{
-		$sql=$sql."and  UserInfo.UserName='".$xctj."' limit ".($page-1)*$limit.",".$limit;
-		$sql1=$sql1."and  UserInfo.UserName='".$xctj."'";
+		$sql=$sql."and  userinfo.UserName='".$xctj."' limit ".($page-1)*$limit.",".$limit;
+		$sql1=$sql1."and  userinfo.UserName='".$xctj."'";
 		break;
 		}
 	case 3:{
-		$sql=$sql."and  DeptInfo.DeptName like '%".$xctj ."%' limit ".($page-1)*$limit.",".$limit;
-		$sql1=$sql1."and  DeptInfo.DeptName like '%".$xctj ."%'";
+		$sql=$sql."and  deptinfo.DeptName like '%".$xctj ."%' limit ".($page-1)*$limit.",".$limit;
+		$sql1=$sql1."and  deptinfo.DeptName like '%".$xctj ."%'";
 		break;
 		}
 	case 4:{
@@ -76,10 +76,10 @@ $query_rsuser =$sql;
 $query_rsuser1 =$sql1;
 $rsuser = mysql_query($query_rsuser, $connjxkh) or die(mysql_error());
 $rsuser1 = mysql_query($query_rsuser1, $connjxkh) or die(mysql_error());
-// "SELECT * FROM UserInfo";
+// "SELECT * FROM userinfo";
 //$q_sql=mysql_query($sql);
 //while($res=mysql_fetch_assoc($q_sql)){
-//$sql2="SELECT * from UserInfo  where UserID=".$userid;
+//$sql2="SELECT * from userinfo  where UserID=".$userid;
 //$q_sql2=mysql_query($sql2);
 $count=mysql_num_rows($rsuser1);
 //echo $count;

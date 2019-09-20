@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsVoteTime" value="name:RecordID;datatype:int,name:RecordName;datatype:string,name:RecordCode;datatype:string,name:starttime;datatype:string,name:endtime;datatype:string,name:status;datatype:string,name:describtion;datatype:blob,name:welcome;datatype:blob,name:end;datatype:blob" />
+</info>

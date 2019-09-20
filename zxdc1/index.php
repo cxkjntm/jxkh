@@ -225,7 +225,7 @@ header("Expires:0");
 					}
 					else if(role == 2 &&result != "" && result == "success"){
 						//若登录成功，跳转到"/main.html"
-						window.location.href='menutest1.php';
+						window.location.href='menutest2.php';
 					}else if(role == 1 &&result != "" && result == "success"){
                         window.location.href='AdminMenu.php';
                     }

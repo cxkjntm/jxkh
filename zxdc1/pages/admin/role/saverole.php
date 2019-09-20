@@ -11,13 +11,13 @@
 	    $memo = $_POST['memo'];
     //$json_arr = array("rolename"=>$rolename,"password"=>$password,"memo"=>$memo);	
     //$json_obj = json_encode($json_arr);
-	$isbanned=false;
+	$isbanned=0;
 	
     
 	
 
 	mysql_select_db($database_connjxkh, $connjxkh);
-	$sql="INSERT INTO LevelInfo (LevelName, Memo, IsBanned)
+	$sql="INSERT INTO levelinfo (LevelName, Memo, IsBanned)
 	VALUES ('$rolename','$memo','$isbanned')";
 
 	//echo $sql;

@@ -41,7 +41,7 @@ $limit=$_GET['limit'];
 //echo $xctj;
 //echo "<br>";
 //echo $xctype;
-$sql="SELECT * from voteRecord Where RecordName like '%".$xctj."%' limit ".($page-1)*$limit.",".$limit;
+$sql="SELECT * from voterecord Where RecordName like '%".$xctj."%' limit ".($page-1)*$limit.",".$limit;
 
 //echo $sql;
 mysql_query('SET NAMES UTF8');

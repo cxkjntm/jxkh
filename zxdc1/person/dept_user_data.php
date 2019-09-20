@@ -40,7 +40,7 @@ $page=$_GET['page'];
 $limit=$_GET['limit'];
 mysql_select_db($database_connjxkh, $connjxkh);
 //查询本部门的所有用户信息（处级领导、职工代表、普通职工）
-$query_rsrm = "SELECT u.UserID,Account,UserName,DeptName,l.LevelName
+$query_rsrm = "SELECT u.UserID,Account,UserName,DeptName,l.LevelName, u.IsDB
 				FROM userinformation u,levelinfo l WHERE u.LevelID=l.LevelID 
 				AND DeptID = ".$_SESSION['Admin_DeptID'] ;
 $query_limit_rsrm = $query_rsrm." order by u.UserID limit ".($page-1)*$limit.",".$limit;

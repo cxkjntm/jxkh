@@ -39,7 +39,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO Role_Menu (role_id, menu_id) VALUES (%s, %s)",
+  $insertSQL = sprintf("INSERT INTO role_menu (role_id, menu_id) VALUES (%s, %s)",
                        GetSQLValueString($_POST['Role'], "int"),
                        GetSQLValueString($_POST['Menu'], "int"));
 
@@ -48,13 +48,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 }
 
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsRole = "SELECT * FROM LevelInfo WHERE IsBanned = False";
+$query_rsRole = "SELECT * FROM levelinfo WHERE IsBanned = False";
 $rsRole = mysql_query($query_rsRole, $connjxkh) or die(mysql_error());
 $row_rsRole = mysql_fetch_assoc($rsRole);
 $totalRows_rsRole = mysql_num_rows($rsRole);
 
 //mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsMenu = "SELECT * FROM MenuInfo WHERE Stats = 1";
+$query_rsMenu = "SELECT * FROM menuinfo WHERE Stats = 1";
 $rsMenu = mysql_query($query_rsMenu, $connjxkh) or die(mysql_error());
 $row_rsMenu = mysql_fetch_assoc($rsMenu);
 $totalRows_rsMenu = mysql_num_rows($rsMenu);

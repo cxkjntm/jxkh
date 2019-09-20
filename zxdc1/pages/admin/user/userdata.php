@@ -33,14 +33,14 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 $page=$_GET['page'];
 $limit=$_GET['limit'];
-//$sql="SELECT * from UserInfo  ";
+//$sql="SELECT * from userinfo  ";
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsuser = "SELECT UserInfo.Account, UserInfo.UserID, UserInfo.UserName, UserInfo.Photo, DeptInfo.DeptName, LevelInfo.LevelName FROM DeptInfo, LevelInfo, UserInfo WHERE UserInfo.DeptID=DeptInfo.DeptID AND LevelInfo.LevelID=UserInfo.LevelID  limit ".($page-1)*$limit.",".$limit;
+$query_rsuser = "SELECT userinfo.Account, userinfo.UserID, userinfo.UserName, userinfo.Photo, deptinfo.DeptName, levelinfo.LevelName FROM deptinfo, levelinfo, userinfo WHERE userinfo.DeptID=deptinfo.DeptID AND levelinfo.LevelID=userinfo.LevelID  limit ".($page-1)*$limit.",".$limit;
 //echo $query_rsuser;
 $rsuser = mysql_query($query_rsuser, $connjxkh) or die(mysql_error());
 
-$sql2="SELECT * from UserInfo";
+$sql2="SELECT * from userinfo";
 $q_sql2=mysql_query($sql2);
 $count=mysql_num_rows($q_sql2);
 $arr=array();

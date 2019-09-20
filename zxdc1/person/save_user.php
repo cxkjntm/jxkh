@@ -25,14 +25,14 @@
 	$isbanned=false;
     mysql_select_db($database_connjxkh, $connjxkh);
 	//查询是否账号已经存在
-	$sql02="SELECT COUNT(Account) AS num FROM userinfo WHERE Account=".$account;
+	$sql02="SELECT COUNT(Account) AS num FROM userinfo WHERE Account='".$account."'";
 	$result02 = mysql_fetch_assoc(mysql_query($sql02, $connjxkh));
 	if($result02['num']>=1){
 		 $json_obj= json_encode(array('code'=>400));
 	}else{
 		
 		//插入数据
-		$sql="INSERT INTO UserInfo (Account, UserName, Passwd, Photo, DeptID, LevelID)
+		$sql="INSERT INTO userinfo (Account, UserName, Passwd, Photo, DeptID, LevelID)
 		VALUES ('$account','$username','$password','$photo','$deptid','$level')";
 		//echo $sql; 
 		mysql_query($sql,$connjxkh);

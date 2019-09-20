@@ -33,7 +33,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 $page=$_GET['page'];
 $limit=$_GET['limit'];
-$sql="SELECT * from DeptInfo limit ".($page-1)*$limit.",".$limit;
+$sql="SELECT * from deptinfo limit ".($page-1)*$limit.",".$limit;
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);
 $query_rsDept =$sql;// "SELECT * FROM DeptInfo";
@@ -41,7 +41,7 @@ $rsDept = mysql_query($query_rsDept, $connjxkh) or die(mysql_error());
 
 $totalRows_rsDept = mysql_num_rows($rsDept);
 
-$sql2="SELECT * from DeptInfo";
+$sql2="SELECT * from deptinfo";
 $q_sql2=mysql_query($sql2);
 $count=mysql_num_rows($q_sql2);
 $arr=array();

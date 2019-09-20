@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsRole" value="name:LevelID;datatype:int,name:LevelName;datatype:string,name:IsBanned;datatype:int" />
+</info>

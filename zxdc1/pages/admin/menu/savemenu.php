@@ -22,7 +22,7 @@
 	
 
 	mysql_select_db($database_connjxkh, $connjxkh);
-	$sql="INSERT INTO MenuInfo (MenuName, MenuMid, Menu_URL, Pare_Menu_ID, paixu,stats )
+	$sql="INSERT INTO menuinfo (MenuName, MenuMid, Menu_URL, Pare_Menu_ID, paixu,stats )
 	VALUES ('$menuname',$menumid,'$menuurl','$paremenuid',$order,'$status')";
 
 	echo $sql;

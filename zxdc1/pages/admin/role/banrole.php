@@ -37,7 +37,7 @@ if (isset($_POST['LevelID'])) {
 }
 //echo $colname_rsRole;
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsRole = sprintf("update LevelInfo set IsBanned=True WHERE LevelID = %s", GetSQLValueString($colname_rsRole, "int"));
+$query_rsRole = sprintf("update levelinfo set IsBanned=True WHERE LevelID = %s", GetSQLValueString($colname_rsRole, "int"));
 $Result = mysql_query($query_rsRole, $connjxkh) or die(mysql_error());
 if($Result)
 	echo json_encode(array('code'=>200));

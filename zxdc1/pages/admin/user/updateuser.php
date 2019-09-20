@@ -38,7 +38,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE UserInfo SET UserName=%s, Passwd=%s, Photo=%s, DeptID=%s, Rank=%s, IsEvaluated=%s, IsPj=%s WHERE UserID=%s",
+  $updateSQL = sprintf("UPDATE userinfo SET UserName=%s, Passwd=%s, Photo=%s, DeptID=%s, Rank=%s, IsEvaluated=%s, IsPj=%s WHERE UserID=%s",
                        GetSQLValueString($_POST['UserName'], "text"),
                        GetSQLValueString($_POST['Passwd'], "text"),
                        GetSQLValueString($_POST['Photo'], "text"),
@@ -67,7 +67,7 @@ if (isset($_GET['UserID'])) {
   $colname_rsUser = $_GET['UserID'];
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsUser = sprintf("SELECT * FROM UserInfo WHERE UserID = %s", GetSQLValueString($colname_rsUser, "int"));
+$query_rsUser = sprintf("SELECT * FROM userinfo WHERE UserID = %s", GetSQLValueString($colname_rsUser, "int"));
 $rsUser = mysql_query($query_rsUser, $connjxkh) or die(mysql_error());
 $row_rsUser = mysql_fetch_assoc($rsUser);
 $totalRows_rsUser = mysql_num_rows($rsUser);
@@ -75,13 +75,13 @@ $DeptID=$row_rsUser['DeptID'];
 $LevelID=$row_rsUser['LevelID'];
 
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsRank = "SELECT * FROM LevelInfo";
+$query_rsRank = "SELECT * FROM levelinfo";
 $rsRank = mysql_query($query_rsRank, $connjxkh) or die(mysql_error());
 $row_rsRank = mysql_fetch_assoc($rsRank);
 $totalRows_rsRank = mysql_num_rows($rsRank);
 
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsDept = "SELECT * FROM DeptInfo";
+$query_rsDept = "SELECT * FROM deptinfo";
 $rsDept = mysql_query($query_rsDept, $connjxkh) or die(mysql_error());
 $row_rsDept = mysql_fetch_assoc($rsDept);
 $totalRows_rsDept = mysql_num_rows($rsDept);
@@ -91,7 +91,7 @@ if (isset($DeptID)) {
   $colname_rsUserDept = $DeptID;
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsUserDept = sprintf("SELECT * FROM DeptInfo WHERE DeptID = %s", GetSQLValueString($colname_rsUserDept, "int"));
+$query_rsUserDept = sprintf("SELECT * FROM deptinfo WHERE DeptID = %s", GetSQLValueString($colname_rsUserDept, "int"));
 $rsUserDept = mysql_query($query_rsUserDept, $connjxkh) or die(mysql_error());
 $row_rsUserDept = mysql_fetch_assoc($rsUserDept);
 $totalRows_rsUserDept = mysql_num_rows($rsUserDept);
@@ -101,7 +101,7 @@ if (isset($LevelID)) {
   $colname_rsUserRank = $LevelID;
 }
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsUserRank = sprintf("SELECT * FROM LevelInfo WHERE LevelID = %s", GetSQLValueString($colname_rsUserRank, "int"));
+$query_rsUserRank = sprintf("SELECT * FROM levelinfo WHERE LevelID = %s", GetSQLValueString($colname_rsUserRank, "int"));
 $rsUserRank = mysql_query($query_rsUserRank, $connjxkh) or die(mysql_error());
 $row_rsUserRank = mysql_fetch_assoc($rsUserRank);
 $totalRows_rsUserRank = mysql_num_rows($rsUserRank);

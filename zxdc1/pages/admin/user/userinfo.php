@@ -41,7 +41,7 @@ if (isset($_GET['pageNum_rsUser'])) {
 $startRow_rsUser = $pageNum_rsUser * $maxRows_rsUser;
 
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsUser = "SELECT UserInfo.UserID, UserInfo.UserName, UserInfo.Passwd, UserInfo.Rank, UserInfo.Photo, UserInfo.IsEvaluated, UserInfo.IsPj, DeptInfo.DeptName, LevelInfo.LevelName, UserInfo.Account, UserInfo.IsBanned FROM DeptInfo, LevelInfo, UserInfo WHERE UserInfo.DeptID=DeptInfo.DeptID AND LevelInfo.LevelID=UserInfo.Rank ORDER BY UserInfo.UserID ASC";
+$query_rsUser = "SELECT userinfo.UserID, userinfo.UserName, userinfo.Passwd, userinfo.Rank, userinfo.Photo, userinfo.IsEvaluated, userinfo.IsPj, deptinfo.DeptName, levelinfo.LevelName, userinfo.Account, userinfo.IsBanned FROM deptinfo, levelinfo, userinfo WHERE userinfo.DeptID=deptinfo.DeptID AND levelinfo.LevelID=userinfo.Rank ORDER BY userinfo.UserID ASC";
 $query_limit_rsUser = sprintf("%s LIMIT %d, %d", $query_rsUser, $startRow_rsUser, $maxRows_rsUser);
 $rsUser = mysql_query($query_limit_rsUser, $connjxkh) or die(mysql_error());
 $row_rsUser = mysql_fetch_assoc($rsUser);

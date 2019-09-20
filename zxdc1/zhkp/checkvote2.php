@@ -42,7 +42,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_query('SET NAMES UTF8');
 mysql_select_db($database_connjxkh, $connjxkh);
-$sql1="select RecordCode from voterecord where khtype=1";
+$sql1="select RecordCode from voterecord where khtype=1 and status='running'";
 $rs = mysql_fetch_assoc(mysql_query($sql1, $connjxkh));
 $tableName="qz_ldcykhinfo_".$rs['RecordCode'];
 

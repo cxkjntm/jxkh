@@ -27,8 +27,8 @@
 	
 
 	mysql_select_db($database_connjxkh, $connjxkh);
-	$sql="INSERT INTO UserInfo (Account, UserName, Passwd, Photo, DeptID, Rank,IsEvaluated, IsPj, IsBanned )
-	VALUES ('$account','$username','$password','$photo','$deptid','$level','$isevaluted','ispj', 'isbanned')";
+	$sql="INSERT INTO userinfo (Account, UserName, Passwd, Photo, DeptID, LevelID )
+	VALUES ('$account','$username','$password','$photo','$deptid','$level')";
 
 	echo $sql;
 	//mysql_query($sql,$connjxkh);

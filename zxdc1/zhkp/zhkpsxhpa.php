@@ -81,14 +81,14 @@ if (!function_exists("GetSQLValueString")) {
 mysql_select_db($database_connjxkh, $connjxkh);
 
 //查询部门名称和部门ID（条件：部门ID 17-32）
-$sql = "SELECT DeptName,DeptID FROM deptinfo where DeptMemo like '%科室%'";
+$sql = "SELECT DeptName,DeptID FROM deptinfo where DeptMemo like '%科室%' order by DeptID ";
 
 //获得结果集
 $result =mysql_query($sql, $connjxkh);
 
 //mysql_fetch_array($result)从结果集中获取一行作为索引数据
-$rs=mysql_fetch_array($result);
-
+//$rs=mysql_fetch_array($result);
+$deptnum=0;
 //While()的作用是将指针向后移动，将下一行的数据交给$row
 while($row=mysql_fetch_row($result)){
 	//输出部门名称         
@@ -99,7 +99,7 @@ while($row=mysql_fetch_row($result)){
 	echo '<td><div class="layui-input-inline">
       <select name="manyi">
         <option value="0">非常满意</option>
-        <option value="1" >满意</option>
+        <option value="1"  selected = "selected" >满意</option>
         <option value="2">基本满意</option>
         <option value="3">不满意</option>
       </select>
@@ -107,8 +107,9 @@ while($row=mysql_fetch_row($result)){
 		echo '<td><div class="layui-input-block">
       <textarea name="text" placeholder="请输入内容" class="layui-textarea"></textarea>
     </div></td></tr>';
+	$deptnum ++;
 }
-
+//echo $deptnum ;
 //关闭数据库连接
 mysql_close($connjxkh);
 ?>
@@ -161,7 +162,7 @@ mysql_close($connjxkh);
 		*请求方式：POST
 		*数据格式：JSON
 		*/
-		if(count!=29){
+		if(count!=<?php echo $deptnum?>){
 			alert("您有未选择的项目！");
 		}else{
 		$.ajax({

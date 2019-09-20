@@ -110,7 +110,7 @@
         	 		console.log(data);
         			//layer.close(index);
          			$.ajax({
-                		url: "startvote.php",
+                		url: "startvote1.php",
                 		type: "POST",
                 		data:{'recordcode':data.RecordCode,'RecordID':data.RecordID},
                 		dataType: "json",

@@ -42,7 +42,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO MenuInfo (MenuName, MenuMid, Menu_URL, Pare_Menu_ID, `Order`, Status) VALUES (%s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO menuinfo (MenuName, MenuMid, Menu_URL, Pare_Menu_ID, `Order`, Status) VALUES (%s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['MenuName'], "text"),
                        GetSQLValueString($_POST['MenuMid'], "int"),
                        GetSQLValueString($_POST['Menu_URL'], "text"),

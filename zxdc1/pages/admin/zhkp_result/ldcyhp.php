@@ -48,7 +48,7 @@ if (!function_exists("GetSQLValueString")) {
 }
 mysql_select_db($database_connjxkh, $connjxkh);
 //查询共有多少位中层正职领导需要参加考核
-$sql02="SELECT COUNT(*) as num FROM userinfo WHERE Rank=2 OR Rank=3";
+$sql02="SELECT COUNT(*) as num FROM userinfo WHERE LevelID=2 OR LevelID=3";
 $result02 = mysql_fetch_assoc(mysql_query($sql02, $connjxkh));
 
 //获取表名

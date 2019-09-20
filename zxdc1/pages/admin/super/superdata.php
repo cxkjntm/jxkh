@@ -32,20 +32,21 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 $page=$_GET['page'];
 $limit=$_GET['limit'];
-$sql="SELECT * from SuperInfo limit ".($page-1)*$limit.",".$limit;
+$sql="SELECT * from superinfo limit ".($page-1)*$limit.",".$limit;
 mysql_query('SET NAMES UTF8');
 
 mysql_select_db($database_connjxkh, $connjxkh);
-$query_rsSuper =$sql;// "SELECT * FROM SuperInfo";
+$query_rsSuper =$sql;// "SELECT * FROM superinfo";
 $rsSuper = mysql_query($query_rsSuper, $connjxkh) or die(mysql_error());
 
-$sql2="SELECT * from SuperInfo";
+$sql2="SELECT * from superinfo";
 $q_sql2=mysql_query($sql2);
 $count=mysql_num_rows($q_sql2);
 $arr=array();
 while($res=mysql_fetch_assoc($rsSuper)){
 	$arr[]=$res;
 }
+
 $data=array(
 		'code'=>0,
 		'msg'=>'',

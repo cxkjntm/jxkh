@@ -1,4 +1,14 @@
 <?php require_once('../Connections/connjxkh.php'); require('knik.php');require('logincheck.php');?>
+<?php
+mysql_select_db($database_connjxkh, $connjxkh);
+$query_rsdept = "SELECT Count(*) as deptnum FROM deptinfo";
+$rsdept = mysql_query($query_rsdept, $connjxkh) or die(mysql_error());
+$row_rsdept = mysql_fetch_assoc($rsdept);
+$totalRows_rsdept = mysql_num_rows($rsdept);
+$deptnum=$row_rsdept["deptnum"]; 
+$_SESSION["deptnum"]=$deptnum;
+//echo $deptnum;
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -102,7 +112,7 @@ while($row=mysql_fetch_row($result)){
 	echo '<td><div class="layui-input-inline">
       <select name="manyi">
         <option value="0">非常满意</option>
-        <option value="1" >满意</option>
+        <option value="1" selected = "selected" >满意</option>
         <option value="2">基本满意</option>
         <option value="3">不满意</option>
       </select>
@@ -113,7 +123,7 @@ while($row=mysql_fetch_row($result)){
 	echo "<td> <input name='".$row[1]."' type='radio' value='3'></td>";*/
 	//设置备注
 	echo '<td><div class="layui-input-block">
-      <textarea name="text" placeholder="请输入内容" class="layui-textarea"></textarea>
+      <textarea name="text" placeholder="请输入内容"  class="layui-textarea"></textarea>
     </div></td></tr>';
 }
 
@@ -130,7 +140,7 @@ mysql_close($connjxkh);
 <script> 
 	function test(){
 		var j=0;
-		var count=0;
+		var count=1;
 		var radio = new Array();
 		var text = new Array();
 		var DeptID = new Array();
@@ -143,6 +153,7 @@ mysql_close($connjxkh);
 				//alert(obj[i].value);
 		
 		}
+		//alert(count);
 		
 		//获取备注内容（通过name获取）
 		var els =document.getElementsByTagName("textarea");
@@ -164,7 +175,7 @@ mysql_close($connjxkh);
 		*请求方式：POST
 		*数据格式：JSON
 		*/
-		if(count == 45){
+		if(count == <?php echo $deptnum ?>){
 		$.ajax({
 	      type:"POST",
 	      url:"2-2018save.php",
@@ -192,3 +203,6 @@ layui.use('form', function(){
 });
 </script>
 </html>
+<?php
+mysql_free_result($rsdept);
+?>

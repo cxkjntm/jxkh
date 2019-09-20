@@ -56,7 +56,7 @@ $hash = $t_hasher->HashPassword($colname_rsUser2);
 //echo $colname_rsUser2;
 //echo $hash;
 mysql_select_db($database_connjxkh, $connjxkh);
-$updateSQL = sprintf("UPDATE UserInfo SET Passwd=%s Where UserInfo.Account=%s",
+$updateSQL = sprintf("UPDATE userinfo SET Passwd=%s Where userinfo.Account=%s",
                        GetSQLValueString($hash, "text"),
 					   GetSQLValueString($colname_rsUser1, "text"));
 

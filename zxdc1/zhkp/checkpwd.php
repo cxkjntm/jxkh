@@ -53,8 +53,8 @@ if (isset($_POST['password'])) {
 //echo $colname_rsUser2;
 
 mysql_select_db($database_connjxkh, $connjxkh);
-//$query_rsUser = sprintf("SELECT * FROM UserInfo WHERE UserName = %s and UserPwd=%s", GetSQLValueString($colname_rsUser1, "text"),GetSQLValueString($colname_rsUser2, "text"));
-$query_rsUser = sprintf("SELECT * FROM UserInfo WHERE Account = %s ", GetSQLValueString($colname_rsUser1, "text"));
+//$query_rsUser = sprintf("SELECT * FROM userinfo WHERE UserName = %s and UserPwd=%s", GetSQLValueString($colname_rsUser1, "text"),GetSQLValueString($colname_rsUser2, "text"));
+$query_rsUser = sprintf("SELECT * FROM userinfo WHERE Account = %s ", GetSQLValueString($colname_rsUser1, "text"));
 	//echo $query_rsUser."<br>";
 $rsUser = mysql_query($query_rsUser, $connjxkh) or die(mysql_error());	
 $row_rsUser= mysql_fetch_assoc($rsUser);
